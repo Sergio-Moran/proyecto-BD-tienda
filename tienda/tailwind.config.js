@@ -1,20 +1,16 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 module.exports = {
-    content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './vendor/laravel/jetstream/**/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-    ],
-
+    prefix: "tw-",
+    purge: ["./resources/**/*.blade.php"],
+    darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            maxHeight: {
+                128: "32rem",
             },
         },
     },
-
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    variants: {
+        extend: {},
+    },
+    plugins: [require("daisyui")],
 };
