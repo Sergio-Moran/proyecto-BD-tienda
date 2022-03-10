@@ -1494,10 +1494,6 @@ html {
     transform: rotate(360deg);
   }
 }
-.tw-form-control {
-  display: flex;
-  flex-direction: column;
-}
 .tw-label {
   display: flex;
   -webkit-user-select: none;
