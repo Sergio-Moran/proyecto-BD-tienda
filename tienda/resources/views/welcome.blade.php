@@ -19,6 +19,9 @@
                 <input type="checkbox" class="tw-toggle tw-toggle-primary" checked>
             </label>
         </div>
+        <div class="form-group">
+            <button class="tw-btn tw-btn-primary">Button</button>
+        </div>
     </div>
 @endsection
 
