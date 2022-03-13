@@ -605,14 +605,6 @@ select {
     max-width: 768px;
   }
 }
-<<<<<<< HEAD
-.tw-label {
-  display: flex;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-=======
 @media (min-width: 1024px) {
 
   .container {
@@ -1261,7 +1253,6 @@ select {
   flex-wrap: wrap;
 }
 .items-center {
->>>>>>> Sergio
   align-items: center;
 }
 .justify-end {
