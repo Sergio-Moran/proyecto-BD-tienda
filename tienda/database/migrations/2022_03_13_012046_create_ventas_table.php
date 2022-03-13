@@ -22,7 +22,7 @@ class CreateVentasTable extends Migration
                 ->onDelete('restrict');
             $table->foreignId('cod_usuario')
                 ->nullable(true)
-                ->constrained('users', 'codigo')
+                ->constrained('users', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->timestamps();
