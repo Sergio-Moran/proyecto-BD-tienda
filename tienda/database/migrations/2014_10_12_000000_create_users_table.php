@@ -20,7 +20,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
+            $table->foreignId('cod_rol_usuario')
+                ->nullable()
+                ->constrained('rol_usuarios', 'codigo')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
