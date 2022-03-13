@@ -14,7 +14,21 @@ class CreateProductosTable extends Migration
     public function up()
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('codigo');
+            $table->string('nombres');
+            $table->double('precio_venta');
+            $table->double('precio_compra');
+            $table->boolean('estado')->default(0);
+            $table->foreignId('cod_proveedor')
+                ->nullable(true)
+                ->constrained('proveedores', 'codigo')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+            $table->foreignId('cod_unidad_medida')
+                ->nullable(true)
+                ->constrained('unidades_de_medidas', 'codigo')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }
