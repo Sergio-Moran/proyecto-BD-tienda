@@ -14,7 +14,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        //
+        return view('prueba.index');
     }
 
     /**
@@ -47,6 +47,7 @@ class ClientesController extends Controller
     public function show(clientes $clientes)
     {
         //
+        return 'HOLA MUNDO';
     }
 
     /**
