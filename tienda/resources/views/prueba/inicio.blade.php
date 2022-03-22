@@ -1,4 +1,12 @@
-
+<header class="pb-6 pt-8">
+    <div class="navbar bg-base-100">
+        <div class="navbar-start">
+        </div>
+        <div class="navbar-center">
+          <a class="btn btn-ghost normal-case text-xl">Inicio</a>
+        </div>
+      </div>
+</header>
     <div class="alert alert-info shadow-lg">
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
