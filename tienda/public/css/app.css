@@ -2672,6 +2672,8 @@ html {
 =======
   color: hsl(var(--inc, var(--nc)) / var(--tw-text-opacity));
 }
+<<<<<<< HEAD
+=======
 .badge-primary {
   --tw-border-opacity: 1;
   border-color: hsl(var(--p) / var(--tw-border-opacity));
@@ -2691,6 +2693,7 @@ html {
   line-height: 1.25rem;
 >>>>>>> Sergio
 }
+>>>>>>> Sergio
 .relative {
   position: relative;
 }
