@@ -18,5 +18,9 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
-Route::get('/prueba/index', [ClientesController::class, 'index'])->name('prueba.index');
+Route::get('/Inicio/index', [ClientesController::class, 'index'])->name('inicio.index');
+
+Route::resource('/Accionistas', ControladorAccionista::class)
+    ->middleware('auth')
+    ->names('admin.accionistas');
 
