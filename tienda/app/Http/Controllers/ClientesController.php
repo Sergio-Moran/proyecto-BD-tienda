@@ -47,7 +47,7 @@ class ClientesController extends Controller
     public function show(clientes $clientes)
     {
         //
-        return 'HOLA MUNDO';
+        return view('Clientes.index');
     }
 
     /**

@@ -19,7 +19,7 @@
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-info" name="btn-" id="btn-" type="button"
-                        href="{{ url('/ejemplo/create') }}">
+                        href="{{ url('/Cliente/show') }}">
                         <i class="">🧑‍🔧 Cuenta</i>
                     </a>
                 </li>

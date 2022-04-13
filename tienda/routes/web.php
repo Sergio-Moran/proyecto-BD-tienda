@@ -27,6 +27,9 @@ Route::get('/Inicio/index', [ClientesController::class, 'index'])
 Route::get('/Cliente/Reportes', [ClientesController::class, 'reporte'])
     ->name('reporte.inicio');
 
+Route::get('/Cliente/Perfil', [ClientesController::class, 'perfil'])
+    ->name('reporte.perfil');
+
 Route::resource('/Productos', ProductosController::class)
     ->middleware('auth')
     ->names('productos.incio');
