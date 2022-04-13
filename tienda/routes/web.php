@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\InventarioProductosController;
+use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +21,24 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
-Route::get('/Inicio/index', [ClientesController::class, 'index'])->name('inicio.index');
+Route::get('/Inicio/index', [ClientesController::class, 'index'])
+    ->name('inicio.index');
 
-Route::resource('/Accionistas', ControladorAccionista::class)
+Route::get('/Cliente/Reportes', [ClientesController::class, 'reporte'])
+    ->name('reporte.inicio');
+
+Route::resource('/Productos', ProductosController::class)
     ->middleware('auth')
-    ->names('admin.accionistas');
+    ->names('productos.incio');
 
+Route::resource('/Cliente', ClientesController::class)
+    ->middleware('auth')
+    ->names('clientes.perfil');
+
+Route::resource('/Inventario', InventarioProductosController::class)
+    ->middleware('auth')
+    ->names('inventario.inicio');
+
+Route::resource('/Ventas', VentasController::class)
+    ->middleware('auth')
+    ->names('ventas.inicio');
