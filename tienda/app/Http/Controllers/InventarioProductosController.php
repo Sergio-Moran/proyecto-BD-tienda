@@ -15,6 +15,7 @@ class InventarioProductosController extends Controller
     public function index()
     {
         //
+        return 'inventario';
     }
 
     /**

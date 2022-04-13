@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Inicio;
+namespace App\Http\Livewire\Productos;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class Index extends Component
 {
     public function render()
     {
-        return view('Inicio.inicio');
+        return view('livewire.productos.index');
     }
 }

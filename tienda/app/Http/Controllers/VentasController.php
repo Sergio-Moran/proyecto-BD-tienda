@@ -15,6 +15,7 @@ class VentasController extends Controller
     public function index()
     {
         //
+        return 'Ventas';
     }
 
     /**
