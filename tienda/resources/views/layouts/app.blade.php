@@ -13,7 +13,7 @@
             <ul>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn btn-primary" name="btn-" id="btn-" type="button"
-                        href="{{ url('/ejemplo/create') }}">
+                        href="{{ url('/Productos/show') }}">
                         <i class="">📦 Productos</i>
                     </a>
                 </li>
@@ -37,7 +37,7 @@
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-success form-control" name="btn-" id="btn-" type="button"
-                        href="{{ url('/ejemplo/create') }}">
+                        href="{{ url('/Cliente/Reportes') }}">
                         <i class="">📄 Reportes</i>
                     </a>
                 </li>

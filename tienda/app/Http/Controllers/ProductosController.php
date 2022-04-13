@@ -48,6 +48,7 @@ class ProductosController extends Controller
     public function show(productos $productos)
     {
         //
+        return view('Productos.index');
     }
 
     /**
