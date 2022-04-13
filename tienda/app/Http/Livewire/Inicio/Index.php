@@ -8,6 +8,6 @@ class Index extends Component
 {
     public function render()
     {
-        return view('Prueba.inicio');
+        return view('Inicio.inicio');
     }
 }
