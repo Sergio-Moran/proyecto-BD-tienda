@@ -25,10 +25,10 @@ Route::get('/Inicio/index', [ClientesController::class, 'index'])
     ->name('inicio.index');
 
 Route::get('/Cliente/Reportes', [ClientesController::class, 'reporte'])
-    ->name('reporte.inicio');
+    ->name('cliente.reportes');
 
 Route::get('/Cliente/Perfil', [ClientesController::class, 'perfil'])
-    ->name('reporte.perfil');
+    ->name('cliente.perfil');
 
 Route::resource('/Productos', ProductosController::class)
     ->middleware('auth')

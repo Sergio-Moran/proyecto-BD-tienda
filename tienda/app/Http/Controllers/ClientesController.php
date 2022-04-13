@@ -85,6 +85,6 @@ class ClientesController extends Controller
     }
 
     public function reporte(){
-        return view('Clientes.reportes');
+        return view('Reportes.index');
     }
 }
