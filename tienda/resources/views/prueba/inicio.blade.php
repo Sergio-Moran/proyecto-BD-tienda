@@ -7,7 +7,7 @@
         </div>
       </div>
 </header>
-    <div class="alert alert-info shadow-lg">
+   {{--  <div class="alert alert-info shadow-lg">
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 class="stroke-current flex-shrink-0 w-6 h-6">
@@ -16,7 +16,7 @@
             </svg>
             <span>New software update available.</span>
         </div>
-    </div>
+    </div> --}}
     <input {{-- wire:model="valor" --}} id="valor" class="input input-bordered w-full mb-5 shadow-lg" type="text"
         placeholder="Busqueda...">
 
