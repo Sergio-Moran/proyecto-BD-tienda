@@ -1,24 +1,20 @@
 @extends('layouts.app')
-
 @section('content_header')
     <header>INICIO</header>
+    @if ($errors->any())
+        <div class="alert alert-error shadow-lg" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 @endsection
-
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @livewireStyles
-    <x-module>
-        <x-errors :errors="$errors" />
-        @include('Productos.formulario',[
-        'requerido'=>'required',
-        'url'=>url('/Productos'),
-        'method'=>'POST'
-        ])
-    </x-module>
-
-    <script src="{{ asset('js/app.js') }}"></script>
-    @livewireScripts
-@endsection
-
-@section('footer')
+    <form action="{{ url('/Productos/Show') }}" method="post" enctype="multipart/form-data" class="mb-16">
+        @csrf
+        @include('Productos.formulario')
+    </form>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 @endsection

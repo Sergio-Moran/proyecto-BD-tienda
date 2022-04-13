@@ -1,65 +1,44 @@
-{{-- 
-<form action="{{ $url }}" enctype="multipart/form-data" method="POST" id="formulario-accionista">
-    @method($method)
-    @csrf
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <x-inputs.general titulo="DPI" id="dpi_pasaporte_greenCard" type="number" required min="0" pattern="\d*"
-                value="{{ isset($accionista->dpi_pasaporte_greenCard)? $accionista->dpi_pasaporte_greenCard: old('dpi_pasaporte_greenCard') }}" />
-        </div>
-        <div class="form-group col-md-4">
-            <x-inputs.general titulo="Nombres" id="nombres" required type="text"
-                value="{{ isset($accionista->nombres) ? $accionista->nombres : old('nombres') }}" />
-        </div>
-        <div class="form-group col-md-4">
-            <x-inputs.general titulo="Apellidos" id="apellidos" required
-                value="{{ isset($accionista->apellidos) ? $accionista->apellidos : old('apellidos') }}" />
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <x-inputs.general titulo="Correo" id="correo_electronico" type="email" required
-                value="{{ isset($accionista->correo_electronico) ? $accionista->correo_electronico : old('') }}" />
-        </div>
-        <div class="form-group col-md-4">
-            <x-inputs.general titulo="No. Cuenta" id="no_cuenta" type="text" required min="0"
-                value="{{ isset($accionista->no_cuenta) ? $accionista->no_cuenta : old('no_cuenta') }}" />
-        </div>
-        <div class="form-group col-md-4">
-            <x-inputs.general titulo="Alias del Accionista" id="alias" type="text" required
-                value="{{ isset($accionista->alias) ? $accionista->alias : old('alias') }}" />
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-2 tw-flex tw-flex-col tw-justify-end">
-            <x-button type="submit" id="btnAceptar"
-                class="tw-enform-control tw-btn tw-bg-blue-600 hover:tw-bg-blue-800">Guardar
-            </x-button>
-        </div>
-        <div class="form-group col-md-2 tw-flex tw-flex-col tw-justify-end">
-            <x-button-link href="{{ url('/Accionistas') }}" class="form-control" type="button">Cancelar
-            </x-button-link>
-        </div>
-    </div>
+@extends('layouts.app')
+
+@section('content_header')
+    <header>INICIO</header>
+@endsection
+
+@section('content')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <div>
-        <p class="tw-mt-3 tw-text-sm">Los campos con * son obligatorios</p>
+        <header class="pb-6 pt-8">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                </div>
+                <div class="navbar-center">
+                    <a class="btn btn-ghost normal-case text-xl">Registro de Productos</a>
+                </div>
+            </div>
+        </header>
+        <div class="form-row form-row shadow-md bg-white rounded-lg ">
+            <div class="grid grid-cols-3 gap-6">
+                <input type="text" placeholder="Type here" class="input input-bordered">
+                <input type="text" placeholder="Type here" class="input input-bordered">
+                <input type="text" placeholder="Type here" class="input input-bordered">
+
+                <input type="text" placeholder="Type here" class="input input-bordered">
+                <input type="text" placeholder="Type here" class="input input-bordered">
+                <input type="text" placeholder="Type here" class="input input-bordered">
+
+                <input type="text" placeholder="Type here" class="input input-bordered">
+                <input type="text" placeholder="Type here" class="input input-bordered">
+                <input type="text" placeholder="Type here" class="input input-bordered">
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
+            <a type="submit">Guardar</a>
+            <a href="{{ url('/Productos/Show') }}" class="mb-10">Cancelar</a>
+
+        </div>
     </div>
-</form>
- --}}
- @extends('layouts.app')
+@endsection
 
- @section('content_header')
-     <header>INICIO</header>
- @endsection
- 
- @section('content')
-     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-     @livewireStyles
-     <h1>Formulario</h1>
-
-     <script src="{{ asset('js/app.js') }}"></script>
-     @livewireScripts
- @endsection
- 
- @section('footer')
- @endsection
+@section('footer')
+@endsection
