@@ -48,6 +48,7 @@ class InventarioProductosController extends Controller
     public function show(inventario_productos $inventario_productos)
     {
         //
+        return view('Inventario.index');
     }
 
     /**

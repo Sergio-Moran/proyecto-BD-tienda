@@ -48,6 +48,7 @@ class VentasController extends Controller
     public function show(ventas $ventas)
     {
         //
+        return view('Ventas.index');
     }
 
     /**

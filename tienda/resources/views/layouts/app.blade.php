@@ -9,7 +9,7 @@
 <div class="flex">
     <div class="flex w-2/3 md:w-1/4 h-screen bg-white">
         <div class="mx-auto py-10">
-            <h1 class="text-2xl font-bold mb-2 cursor-pointer text-[#EC5252] duration-150">TIENDA</h1>
+            <a href="{{ url('/Inicio/index') }}" class="text-2xl font-bold mb-2 cursor-pointer text-[#EC5252] duration-150">TIENDA</a>
             <ul>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn btn-primary" name="btn-" id="btn-" type="button"
@@ -25,13 +25,13 @@
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn btn-ghost form-control" name="btn-" id="btn-" type="button"
-                        href="{{ url('/ejemplo/create') }}">
+                        href="{{ url('/Inventario/Show') }}">
                         <i class="">📘 Inventario</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-secondary-focus form-control" name="btn-" id="btn-" type="button"
-                        href="{{ url('/ejemplo/create') }}">
+                        href="{{ url('/Ventas/Show') }}">
                         <i class="">💵 Ventas</i>
                     </a>
                 </li>
