@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\productos;
+use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -26,6 +27,7 @@ class ProductosController extends Controller
     public function create()
     {
         //
+        return view('Productos.formulario');
     }
 
     /**

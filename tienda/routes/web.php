@@ -45,3 +45,6 @@ Route::resource('/Inventario', InventarioProductosController::class)
 Route::resource('/Ventas', VentasController::class)
     ->middleware('auth')
     ->names('ventas.inicio');
+
+Route::get('/Productos/create', [ProductosController::class, 'create'])
+    ->name('productos.crear');
