@@ -14,25 +14,25 @@
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn btn-primary" name="btn-" id="btn-" type="button"
                         href="{{ url('/ejemplo/create') }}">
-                        <i class="">📦 Producto</i>
+                        <i class="">📦 Productos</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-info" name="btn-" id="btn-" type="button"
                         href="{{ url('/ejemplo/create') }}">
-                        <i class="">📦 Producto</i>
+                        <i class="">🧑‍🔧 Cuenta</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn btn-ghost form-control" name="btn-" id="btn-" type="button"
                         href="{{ url('/ejemplo/create') }}">
-                        <i class="">📦 Producto</i>
+                        <i class="">📘 Inventario</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-secondary-focus form-control" name="btn-" id="btn-" type="button"
                         href="{{ url('/ejemplo/create') }}">
-                        <i class="">📦 Producto</i>
+                        <i class="">💵 Ventas</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
@@ -41,12 +41,12 @@
                         <i class="">📄 Reportes</i>
                     </a>
                 </li>
-                <button class="w-full mt-2 bg-[#EC5252] rounded-full py-1.5 text-white">
+                <button class="mt-2 bg-[#EC5252] rounded-full">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
                             this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Cerrar Sesión') }}
                         </x-jet-dropdown-link>
                     </form>
                 </button>

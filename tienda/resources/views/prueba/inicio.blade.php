@@ -18,5 +18,5 @@
         </div>
     </div>
     <input {{-- wire:model="valor" --}} id="valor" class="input input-bordered w-full mb-5 shadow-lg" type="text"
-        placeholder="Busque por datos principales del puente...">
+        placeholder="Busqueda...">
 
