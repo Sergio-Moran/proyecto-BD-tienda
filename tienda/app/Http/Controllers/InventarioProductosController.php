@@ -26,6 +26,7 @@ class InventarioProductosController extends Controller
     public function create()
     {
         //
+        return view('Inventario.crear');
     }
 
     /**
