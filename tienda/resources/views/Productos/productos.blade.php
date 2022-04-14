@@ -1,6 +1,7 @@
-<h1>Productos</h1>
+<h1 class="btn btn-ghost normal-case text-xl" style="margin-top: 0.5ch; margin-left: 30%; font-size: 2rem">Productos</h1>
+<br>
 <div class="absolute top-0 right-16">
-    <a href="{{url('/Productos/create')}}" class="btn btn-warning" >Agregar Producto ➕</a>
+    <a href="{{url('/Productos/create')}}" style="margin-top: 2ch" class="btn btn-warning" style="margin-r">Agregar Producto ➕</a>
 </div>
 
 <br>
