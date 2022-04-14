@@ -11,34 +11,29 @@
       <!-- head -->
       <thead>
         <tr>
-          <th></th>
-          <th>Name</th>
-          <th>Job</th>
-          <th>Favorite Color</th>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Precio de Venta</th>
+          <th>Precio de Compra</th>
+          <th>Estado</th>
+          <th>Proveedor</th>
+          <th>Unidad de Medida</th>
         </tr>
       </thead>
+      
       <tbody>
-        <!-- row 1 -->
+        
+        @foreach($productos as $producto)
         <tr>
-          <th>1</th>
-          <td>Cy Ganderton</td>
-          <td>Quality Control Specialist</td>
-          <td>Blue</td>
+          <th>{{$producto->codigo}}</th>
+          <th>{{$producto->nombres}}</th>
+          <td>{{$producto->precio_venta}}</td>
+          <td>{{$producto->precio_compra}}</td>
+          <td>{{$producto->estado}}</td>
+          <td>{{$producto->cod_proveedor}}</td>
+          <td>{{$producto->cod_unidad_medida}}</td>
         </tr>
-        <!-- row 2 -->
-        <tr>
-          <th>2</th>
-          <td>Hart Hagerty</td>
-          <td>Desktop Support Technician</td>
-          <td>Purple</td>
-        </tr>
-        <!-- row 3 -->
-        <tr>
-          <th>3</th>
-          <td>Brice Swyre</td>
-          <td>Tax Accountant</td>
-          <td>Red</td>
-        </tr>
+        @endforeach
       </tbody>
     </table>
   </div>

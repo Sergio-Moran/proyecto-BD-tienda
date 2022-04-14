@@ -16,7 +16,7 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        return 'Productos';
+        return 'Productos.index';
     }
 
     /**
@@ -39,6 +39,9 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $datos = $request->except('_token');
+        productos::insert($datos);
+        return view('Productos.index');
     }
 
     /**
