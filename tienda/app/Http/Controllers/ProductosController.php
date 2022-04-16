@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\productos;
+use App\Models\proveedores;
+use App\Models\unidades_de_medida;
+use App\Models\unidades_de_medidas;
 use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Http\Request;
 
@@ -24,10 +27,25 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public $valor = "";
     public function create()
     {
         //
-        return view('Productos.crear');
+
+        $proveedores = proveedores::where(function ($query) {
+            $query->where('nombres', 'like', "%{$this->valor}%")
+                ->orWhere('apellidos', 'like', "%{$this->valor}%")
+                ->orWhere('correo', 'like', "%{$this->valor}%");
+        })
+        ->get();
+
+        $unidad_medidas = unidades_de_medidas::where(function ($query) {
+            $query->where('descripcion', 'like', "%{$this->valor}%");
+        })
+        ->get();
+
+        return view('Productos.crear', ['proveedores' => $proveedores],['unidad_medidas' => $unidad_medidas]);
     }
 
     /**

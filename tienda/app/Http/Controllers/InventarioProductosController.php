@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\inventario_productos;
+use App\Models\productos;
 use Illuminate\Http\Request;
+use Illuminate\View\ViewServiceProvider;
 
 class InventarioProductosController extends Controller
 {
@@ -23,10 +25,19 @@ class InventarioProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $valor = "";
     public function create()
     {
         //
-        return view('Inventario.crear');
+       
+        $productos = Productos::where(function ($query) {
+            $query->where('nombres', 'like', "%{$this->valor}%")
+                ->orWhere('precio_venta', 'like', "%{$this->valor}%")
+                ->orWhere('precio_compra', 'like', "%{$this->valor}%");
+        })
+        ->get();
+        //return $productos;
+        return view('Inventario.crear',['productos' => $productos]);
     }
 
     /**
@@ -38,6 +49,9 @@ class InventarioProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $datos = $request->except('_token');
+        inventario_productos::insert($datos);
+        return view('Inventario.index');
     }
 
     /**
