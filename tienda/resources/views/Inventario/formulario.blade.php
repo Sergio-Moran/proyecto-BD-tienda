@@ -19,7 +19,7 @@
             <input type="text" placeholder="Cantidad" name="cantidad" class="input input-bordered">
 
             <label for="Nombre">Nombre del Producto</label>           
-            <select class="input input-bordered" name="cod_producto" id="" option="Medida">
+            <select class="input input-bordered" name="cod_producto_fk" id="" option="Medida">
             @foreach ($productos as $producto)
             <option value="{{$producto->codigo}}">{{$producto->nombres}}</option>    
             @endforeach

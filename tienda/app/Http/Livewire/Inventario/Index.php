@@ -19,7 +19,7 @@ class Index extends Component
                 ->orWhere('inventario_productos.cantidad', 'like', "%{$this->valor}%")
                 ->orWhere('productos.nombres', 'like', "%{$this->valor}%");
         })
-        ->join('productos', 'productos.codigo', '=', 'inventario_productos.cod_producto')
+        ->join('productos', 'productos.codigo', '=', 'inventario_productos.cod_producto_fk')
         ->limit($this->porPagina)
         ->get();
 

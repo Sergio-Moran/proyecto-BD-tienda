@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\productos;
 use App\Models\ventas;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,11 @@ class VentasController extends Controller
     public function store(Request $request)
     {
         //
+        $datos = $request->except('_token');
+        $datos['cod_usuario'] = request()->user()->id;
+        return $datos;
+
+//        return $request;
     }
 
     /**

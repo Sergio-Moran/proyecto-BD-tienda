@@ -22,14 +22,14 @@
             <input type="text" placeholder="Q" name="precio_compra" class="input input-bordered">
             
             <label for="Nombre">Proveedor</label>
-            <select class="input input-bordered" name="cod_proveedor" id="cod_unidad_medida" option="Medida">
+            <select class="input input-bordered" name="cod_proveedor_fk" id="cod_proveedor_fk" option="Medida">
                 @foreach ($proveedores as $proveedor)
                 <option value="{{$proveedor->codigo}}">{{$proveedor->nombres}}</option>    
                 @endforeach
             </select>
 
             <label for="Nombre">Unidad de Medida</label>
-            <select class="input input-bordered" name="cod_unidad_medida" id="cod_unidad_medida" option="Medida">
+            <select class="input input-bordered" name="cod_unidad_medida_fk" id="cod_unidad_medida_fk" option="Medida">
                 @foreach ($unidad_medidas as $unidad)
                 <option value="{{$unidad->codigo}}">{{$unidad->descripcion}}</option>    
                 @endforeach

@@ -17,7 +17,7 @@ class CreateInventarioProductosTable extends Migration
             $table->bigIncrements('codigo');
             $table->string('descripcion');
             $table->double('cantidad');
-            $table->foreignId('cod_producto')
+            $table->foreignId('cod_producto_fk')
                 ->nullable(true)
                 ->constrained('productos', 'codigo')
                 ->onUpdate('cascade')
