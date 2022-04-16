@@ -12,18 +12,13 @@
     </header>
     <div class="form-row form-row shadow-md bg-auto rounded-lg" style="margin: 2ch; padding: 3ch">
         <div class="grid grid-cols-2 gap-4">
-            <label for="Nombre">Nombre Producto</label>            
-
-            <select class="input input-bordered" name="descripcion" id="" option="Medida">
-            @foreach ($productos as $producto)
-            <option value="{{$producto->nombres}}">{{$producto->nombres}}</option>    
-            @endforeach
-            </select>
+            <label for="Nombre">Descripcion</label>            
+            <input type="text" placeholder="Descripcion" name="descripcion" class="input input-bordered">
             
             <label for="Nombre">Cantidad</label>
             <input type="text" placeholder="Cantidad" name="cantidad" class="input input-bordered">
 
-            <label for="Nombre">Codigo del Producto</label>           
+            <label for="Nombre">Nombre del Producto</label>           
             <select class="input input-bordered" name="cod_producto" id="" option="Medida">
             @foreach ($productos as $producto)
             <option value="{{$producto->codigo}}">{{$producto->nombres}}</option>    

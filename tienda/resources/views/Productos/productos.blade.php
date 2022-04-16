@@ -26,12 +26,12 @@
         @foreach($productos as $producto)
         <tr>
           <th>{{$producto->codigo}}</th>
-          <th>{{$producto->nombres}}</th>
+          <th>{{$producto->nombreProducto}}</th>
           <td>{{$producto->precio_venta}}</td>
           <td>{{$producto->precio_compra}}</td>
           <td>{{$producto->estado}}</td>
-          <td>{{$producto->cod_proveedor}}</td>
-          <td>{{$producto->cod_unidad_medida}}</td>
+          <td>{{$producto->nombreProveedor}}</td>
+          <td>{{$producto->descripcion}}</td>
         </tr>
         @endforeach
       </tbody>

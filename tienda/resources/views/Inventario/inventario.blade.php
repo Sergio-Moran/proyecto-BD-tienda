@@ -14,7 +14,7 @@
           <th>Codigo</th>
           <th>Descripcion</th>
           <th>Cantidad</th>
-          <th>Codigo de Producto</th>
+          <th>Nombre del Producto</th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@
           <th>{{$inventario->codigo}}</th>
           <th>{{$inventario->descripcion}}</th>
           <td>{{$inventario->cantidad}}</td>
-          <td>{{$inventario->cod_producto}}</td>
+          <td>{{$inventario->nombres}}</td>
         </tr>
         @endforeach
       </tbody>

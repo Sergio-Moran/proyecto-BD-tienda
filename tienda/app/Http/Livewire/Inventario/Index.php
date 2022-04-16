@@ -15,10 +15,11 @@ class Index extends Component
     {
         
         $inventario_productos = inventario_productos::where(function ($query) {
-            $query->where('descripcion', 'like', "%{$this->valor}%")
-                ->orWhere('cantidad', 'like', "%{$this->valor}%")
-                ->orWhere('cod_producto', 'like', "%{$this->valor}%");
+            $query->where('inventario_productos.descripcion', 'like', "%{$this->valor}%")
+                ->orWhere('inventario_productos.cantidad', 'like', "%{$this->valor}%")
+                ->orWhere('productos.nombres', 'like', "%{$this->valor}%");
         })
+        ->join('productos', 'productos.codigo', '=', 'inventario_productos.cod_producto')
         ->limit($this->porPagina)
         ->get();
 
