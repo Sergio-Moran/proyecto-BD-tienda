@@ -10,7 +10,7 @@
         </div>
         </div>
     </header>
-    <div class="form-row form-row shadow-md bg-auto rounded-lg " style="margin: 2ch">
+    <div class="form-row form-row shadow-md bg-auto rounded-lg " style="margin: 2ch;  padding: 3ch">
         <div class="grid grid-cols-2 gap-4">
             <label for="Nombre">Nombre Producto</label>
             <input type="text" placeholder="Nombre Producto" name="nombres" class="input input-bordered">
@@ -22,19 +22,17 @@
             <input type="text" placeholder="Q" name="precio_compra" class="input input-bordered">
             
             <label for="Nombre">Proveedor</label>
-            <select class="input input-bordered" name="cod_proveedor" id="cod_unidad_medida" option="Medida">
-                <option value="1">Jose Bernardo</option>
-                <option value="2">Saab</option>
-                <option value="3">Mercedes</option>
-                <option value="4">Audi</option>
+            <select class="input input-bordered" name="cod_proveedor_fk" id="cod_proveedor_fk" option="Medida">
+                @foreach ($proveedores as $proveedor)
+                <option value="{{$proveedor->codigo}}">{{$proveedor->nombres}}</option>    
+                @endforeach
             </select>
 
             <label for="Nombre">Unidad de Medida</label>
-            <select class="input input-bordered" name="cod_unidad_medida" id="cod_unidad_medida" option="Medida">
-                <option value="1">metros</option>
-                <option value="2">Saab</option>
-                <option value="3">Mercedes</option>
-                <option value="4">Audi</option>
+            <select class="input input-bordered" name="cod_unidad_medida_fk" id="cod_unidad_medida_fk" option="Medida">
+                @foreach ($unidad_medidas as $unidad)
+                <option value="{{$unidad->codigo}}">{{$unidad->descripcion}}</option>    
+                @endforeach
             </select>
         </div>
 

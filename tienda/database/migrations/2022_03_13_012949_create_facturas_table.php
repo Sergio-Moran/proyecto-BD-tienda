@@ -15,18 +15,20 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->bigIncrements('codigo');
-            $table->string('descripcion');
-            $table->double('total');
-            $table->foreignId('cod_cliente')
+            $table->foreignId('cod_cliente_fk')
                 ->nullable(true)
                 ->constrained('clientes', 'codigo')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
-            $table->foreignId('cod_venta')
-                ->nullable(true)
-                ->constrained('ventas', 'codigo')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
+            $table->string('ciudad');
+            $table->string('descripcion');
+            $table->double('total');
+            $table->foreignId('cod_usuario_fk')
+            ->nullable(true)
+            ->constrained('users', 'id')
+            ->onUpdate('cascade')
+            ->onDelete('restrict');
+            $table->boolean('estado_pagado');
             $table->timestamps();
         });
     }

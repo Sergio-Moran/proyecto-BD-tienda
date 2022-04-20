@@ -20,9 +20,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('cod_rol_usuario')
+            $table->foreignId('cod_dato_usuario_fk')
                 ->nullable()
-                ->constrained('rol_usuarios', 'codigo')
+                ->constrained('dato_usuarios', 'codigo')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->string('profile_photo_path', 2048)->nullable();
