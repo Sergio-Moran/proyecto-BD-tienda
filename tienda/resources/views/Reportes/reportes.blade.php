@@ -1,4 +1,4 @@
-<div class="place-self-auto">
+<div class="place-self-auto grid justify-items-center ">
     <div class="card w-96 bg-base-100 shadow-xl flex flex-col space-y-4 ">
         <div class="card-actions justify-center">
             <button class="btn btn-primary">Reporte 1</button>
