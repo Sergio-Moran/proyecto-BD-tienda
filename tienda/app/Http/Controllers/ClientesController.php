@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Usuarios\Guardar;
 use App\Models\clientes;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,10 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
+        
     }
 
     /**
@@ -84,7 +86,8 @@ class ClientesController extends Controller
         //
     }
 
-    public function reporte(){
+    public function reporte()
+    {
         return view('Reportes.index');
     }
 }

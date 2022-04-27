@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\InventarioProductosController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\RolUsuarioController;
 use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,11 @@ Route::get('/Inicio/index', [ClientesController::class, 'index'])
 Route::get('/Cliente/Reportes', [ClientesController::class, 'reporte'])
     ->name('cliente.reportes');
 
+Route::get('/Cliente/usuarios', [ClientesController::class, 'create'])
+    ->name('cliente.usuario');
+
+Route::post('/Cliente/store', [ClientesController::class, 'usuario']);
+
 Route::get('/Cliente/Perfil', [ClientesController::class, 'perfil'])
     ->name('cliente.perfil');
 
@@ -45,3 +51,7 @@ Route::resource('/Inventario', InventarioProductosController::class)
 Route::resource('/Ventas', VentasController::class)
     ->middleware('auth')
     ->names('ventas.inicio');
+
+Route::resource('/RolUsuarios', RolUsuarioController::class)
+    ->middleware('auth')
+    ->names('RolUsuarios.inicio');

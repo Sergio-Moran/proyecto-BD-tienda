@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Usuarios\Guardar;
 use App\Models\rol_usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RolUsuarioController extends Controller
 {
@@ -25,6 +28,7 @@ class RolUsuarioController extends Controller
     public function create()
     {
         //
+        return view('Usuarios.crear');
     }
 
     /**
@@ -36,6 +40,14 @@ class RolUsuarioController extends Controller
     public function store(Request $request)
     {
         //
+        User::create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'rol' => $request->get('rol'),
+            'password' => Hash::make($request->get('password')),
+        ]);
+        return redirect("/Inicio/index")
+            ->with('message', 'Usuario agregado ✔️');
     }
 
     /**
