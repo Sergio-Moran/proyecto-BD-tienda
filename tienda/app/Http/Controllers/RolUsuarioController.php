@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Usuarios\Guardar;
+use App\Models\dato_usuarios;
 use App\Models\rol_usuario;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -43,9 +44,32 @@ class RolUsuarioController extends Controller
         User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'rol' => $request->get('rol'),
             'password' => Hash::make($request->get('password')),
         ]);
+        $id = User::orderBy('id', 'desc')->first();
+
+        if ($request->get('rol') == 'Administrador') {
+            $numero = 1;
+        } else if ($request->get('rol') == 'Trabajador') {
+            $numero = 2;
+        } else if ($request->get('rol') == 'Cliente') {
+            $numero = 3;
+        }
+
+        dato_usuarios::insert([
+            'nombres' => $request->get('name'),
+            'apellidos' => $request->get('apellidos'),
+            'telefono' => $request->get('telefono'),
+            'direccion' => $request->get('direccion'),
+            'dpi' => $request->get('dpi'),
+            'cod_rol_usuario_fk' => $numero,
+        ]);
+
+        User::where('id', '=', $id['id'])->update([
+            'cod_dato_usuario_fk' => $id['id'],
+            'rol' => $request->get('rol'),
+        ]);
+
         return redirect("/Inicio/index")
             ->with('message', 'Usuario agregado ✔️');
     }

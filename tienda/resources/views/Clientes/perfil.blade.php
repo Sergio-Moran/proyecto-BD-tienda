@@ -7,7 +7,7 @@
         <div class="grid grid-cols-2 gap-4">
             <div class="grid justify-items-center">
                 <label for="Nombre">Nombre</label>
-                <input type="text" placeholder="Nombre" name="nombres" class="input input-bordered">
+                <input type="text" placeholder="Nombre" value="{{}}" class="input input-bordered">
                 <label for="Puesto">Puesto</label>
                 <input type="text" placeholder="Puesto" name="puesto" class="input input-bordered">
                 <label for="Algo mas">Algo mas</label>
