@@ -41,7 +41,7 @@
                         <i class="">📄 Reportes</i>
                     </a>
                 </li>
-                @if (request()->user()->rol == 'Admin')
+                @if (request()->user()->rol == 'Administrador')
                     <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                         <a class="btn bg-success form-control" style="padding-right: 34px" name="btn-" id="btn-"
                             type="button" href="{{ url('/RolUsuarios/create') }}">
