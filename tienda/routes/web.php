@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\InventarioProductosController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\Reportes;
 use App\Http\Controllers\RolUsuarioController;
 use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,9 @@ Route::post('/Cliente/store', [ClientesController::class, 'usuario']);
 
 Route::get('/Cliente/Perfil', [ClientesController::class, 'perfil'])
     ->name('cliente.perfil');
+
+Route::get('/ReporteUno', [Reportes::class, 'reporteUno'])
+    ->name('reporteUno');
 
 Route::resource('/Productos', ProductosController::class)
     ->middleware('auth')
