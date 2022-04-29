@@ -26,6 +26,7 @@ class ProveedoresController extends Controller
     public function create()
     {
         //
+        return view('Proveedores.crear');
     }
 
     /**
@@ -37,6 +38,7 @@ class ProveedoresController extends Controller
     public function store(Request $request)
     {
         //
+        return 'store';
     }
 
     /**
