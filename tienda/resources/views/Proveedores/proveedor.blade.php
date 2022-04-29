@@ -13,24 +13,25 @@
         <tr>
           <th>Codigo</th>
           <th>Nombre</th>
-          <th>Producto</th>
-          <th>Precio</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th>Editar</th>
         </tr>
       </thead>
       
       <tbody>
         
-        {{-- @foreach($proveedores as $proveedor)
+        @foreach($proveedores as $proveedor)
         <tr>
-            <th>{{$proveedor->nombreProducto}}</th>
-            <td>{{$proveedor->precio_venta}}</td>
-            <td>{{$proveedor->precio_compra}}</td>
-            <td>{{$proveedor->estado}}</td>
-            <td>{{$proveedor->nombreProveedor}}</td>
-            <td>{{$proveedor->descripcion}}</td>
             <th>{{$proveedor->codigo}}</th>
+            <td>{{$proveedor->nombres}} {{$proveedor->apellidos}}</td>
+            <td>{{$proveedor->correo}}</td>
+            <td>{{$proveedor->telefono}}</td>
+            <td>{{$proveedor->direccion}}</td>
+            <td></td>
         </tr>
-        @endforeach --}}
+        @endforeach
       </tbody>
     </table>
   </div>

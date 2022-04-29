@@ -38,7 +38,9 @@ class ProveedoresController extends Controller
     public function store(Request $request)
     {
         //
-        return 'store';
+        $datos = $request->except('_token');
+        proveedores::insert($datos);
+        return view('Proveedores.index');
     }
 
     /**
@@ -58,9 +60,12 @@ class ProveedoresController extends Controller
      * @param  \App\Models\proveedores  $proveedores
      * @return \Illuminate\Http\Response
      */
-    public function edit(proveedores $proveedores)
+    public function edit($id)
     {
         //
+        $datos = proveedores::findOrFail($id);
+        return $datos;
+        return view('ReporteDos.editar', compact('datos'));
     }
 
     /**
