@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\InventarioProductosController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\Reportes;
 use App\Http\Controllers\RolUsuarioController;
 use App\Http\Controllers\VentasController;
@@ -55,6 +56,10 @@ Route::resource('/Inventario', InventarioProductosController::class)
 Route::resource('/Ventas', VentasController::class)
     ->middleware('auth')
     ->names('ventas.inicio');
+
+Route::resource('/Proveedor', ProveedoresController::class)
+    ->middleware('auth')
+    ->names('proveedor.inicio');
 
 Route::resource('/RolUsuarios', RolUsuarioController::class)
     ->middleware('auth')

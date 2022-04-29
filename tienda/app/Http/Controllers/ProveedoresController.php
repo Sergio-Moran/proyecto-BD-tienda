@@ -15,6 +15,7 @@ class ProveedoresController extends Controller
     public function index()
     {
         //
+        return view('Proveedores.index');
     }
 
     /**

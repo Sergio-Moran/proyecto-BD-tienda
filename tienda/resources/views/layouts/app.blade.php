@@ -24,6 +24,12 @@
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
+                    <a class="btn bg-info" style="padding-right: 44px" style="padd" name="btn-" id="btn-"
+                        type="button" href="{{ url('/Proveedor') }}">
+                        <i class="">🧑‍🔧 Proveedores</i>
+                    </a>
+                </li>
+                <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn btn-ghost form-control" style="padding-right: 17px; border-color: black;" name="btn-"
                         id="btn-" type="button" href="{{ url('/Inventario/Show') }}">
                         <i class="">📘 Inventario</i>
