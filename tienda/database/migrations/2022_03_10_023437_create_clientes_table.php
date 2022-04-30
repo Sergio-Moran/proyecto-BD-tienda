@@ -20,7 +20,7 @@ class CreateClientesTable extends Migration
             $table->string('correo',50);
             $table->integer('telefono');
             $table->string('direccion',50);
-            $table->integer('nit')->unique();
+            $table->string('nit')->unique();
             $table->string('dpi')->unique();
             $table->timestamps();
         

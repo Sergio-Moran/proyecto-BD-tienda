@@ -35,10 +35,12 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //
-        
+        $datos = $request->except('_token');
+        clientes::insert($datos);
+        return view('Clientes.indexClientes');
     }
 
     /**
@@ -59,9 +61,11 @@ class ClientesController extends Controller
      * @param  \App\Models\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(clientes $clientes)
+    public function edit($id)
     {
         //
+        $datos = proveedores::findOrFail($id);
+        return view('Clientes.editar', compact('datos'));
     }
 
     /**

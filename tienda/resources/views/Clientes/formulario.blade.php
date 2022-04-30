@@ -12,12 +12,12 @@
     <div class="form-row form-row shadow-md bg-auto rounded-lg " style="margin: 2ch;  padding: 3ch">
         <div class="grid grid-cols-2 gap-4">
             <label for="Nombre">Nombres</label>
-            <input type="text" name="nombres" class="input input-bordered"
-                value="{{ $datos->nombres ?? old('nombres') }}" required>
+            <input type="text" name="nombre" class="input input-bordered"
+                value="{{ $datos->nombre ?? old('nombre') }}" required>
 
             <label for="Apellidos">Apellidos</label>
-            <input type="text" name="apellidos" class="input input-bordered"
-                value="{{ $datos->apellidos ?? old('apellidos') }}" required>
+            <input type="text" name="apellido" class="input input-bordered"
+                value="{{ $datos->apellido ?? old('apellido') }}" required>
 
             <label for="Telefono">Teléfono</label>
             <input type="number" name="telefono" class="input input-bordered"

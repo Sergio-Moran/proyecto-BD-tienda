@@ -24,7 +24,7 @@
         @foreach($clientes as $cliente)
         <tr>
           <th>{{$cliente->codigo}}</th>
-          <th>{{$cliente->nombres}} {{$cliente->apellidos}}</th>
+          <th>{{$cliente->nombre}} {{$cliente->apellido}}</th>
           <td>{{$cliente->correo}}</td>
           <td>{{$cliente->telefono}}</td>
           <td>{{$cliente->direccion}}</td>
