@@ -27,6 +27,8 @@ Route::get('/', function () {
 
 Route::get('/Proveedor/{id}/destroy', [ProveedoresController::class, 'destroy'])->name('destroy');
 
+Route::get('/Productos/{codigo}/destroy', [UnidadesDeMedidaController::class, 'destroy'])->name('destroy');
+
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
     ->name('inicio.index');
 
