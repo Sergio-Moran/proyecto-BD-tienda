@@ -19,7 +19,7 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        return 'Productos.index';
+        return view('Productos.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public $valor = "";
     public function create()
     {
@@ -38,14 +38,14 @@ class ProductosController extends Controller
                 ->orWhere('apellidos', 'like', "%{$this->valor}%")
                 ->orWhere('correo', 'like', "%{$this->valor}%");
         })
-        ->get();
+            ->get();
 
         $unidad_medidas = unidades_de_medidas::where(function ($query) {
             $query->where('descripcion', 'like', "%{$this->valor}%");
         })
-        ->get();
+            ->get();
 
-        return view('Productos.crear', ['proveedores' => $proveedores],['unidad_medidas' => $unidad_medidas]);
+        return view('Productos.crear', ['proveedores' => $proveedores], ['unidad_medidas' => $unidad_medidas]);
     }
 
     /**
@@ -80,9 +80,29 @@ class ProductosController extends Controller
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function edit(productos $productos)
+    public function edit($id)
     {
         //
+        $datos = productos::findOrFail($id);
+        $proveedores = proveedores::where(function ($query) {
+            $query->where('nombres', 'like', "%{$this->valor}%")
+                ->orWhere('apellidos', 'like', "%{$this->valor}%")
+                ->orWhere('correo', 'like', "%{$this->valor}%");
+        })
+            ->get();
+
+        $unidad_medidas = unidades_de_medidas::where(function ($query) {
+            $query->where('descripcion', 'like', "%{$this->valor}%");
+        })
+            ->get();
+        return view(
+            'Productos.editar',
+            compact('datos'),
+            [
+                'proveedores' => $proveedores,
+                'unidad_medidas' => $unidad_medidas
+            ]
+        );
     }
 
     /**
@@ -103,8 +123,11 @@ class ProductosController extends Controller
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(productos $productos)
+    public function destroy($id)
     {
         //
+        productos::where('id', '=', $id)
+            ->delete();
+        return redirect('/Productos')->with('message', 'Registro Eliminado ✔️');
     }
 }

@@ -14,7 +14,7 @@ class Index extends Component
     {
 
         $productos = Productos::selectRaw('proveedores.nombres as nombreProveedor, productos.nombres as nombreProducto,
-            productos.precio_venta, productos.precio_compra, unidades_de_medidas.descripcion, productos.codigo, 
+            productos.precio_venta, productos.precio_compra, unidades_de_medidas.descripcion, productos.id, 
             productos.estado')
             ->where(function ($query) {
                 $query->where('productos.nombres', 'like', "%{$this->valor}%")

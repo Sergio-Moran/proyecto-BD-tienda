@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content_header')
-    <x-header titulo="EDITAR" />
     @if ($errors->any())
         <div class="alert alert-error shadow-lg" role="alert">
             <ul>

@@ -27,7 +27,7 @@
 
             @foreach ($productos as $producto)
                 <tr>
-                    <th>{{ $producto->codigo }}</th>
+                    <th>{{ $producto->id }}</th>
                     <th>{{ $producto->nombreProducto }}</th>
                     <td>{{ $producto->precio_venta }}</td>
                     <td>{{ $producto->precio_compra }}</td>
@@ -37,10 +37,10 @@
                     <td>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5" style="margin: 2ch">
                             <a class="btn btn-outline btn-error"
-                                href="{{ url('/Productos/' . $producto->codigo . '/edit') }}"
+                                href="{{ url('/Productos/' . $producto->id . '/edit') }}"
                                 class="mb-10">Editar</a>
                             <a class="btn btn-outline btn-error" onclick="return confirm('¿Desea eliminar el registro?')"
-                                type="submit" href="{{ url('/Productos/' . $producto->codigo . '/destroy') }}"
+                                type="submit" href="{{ url('/Productos/' . $producto->id . '/destroy') }}"
                                 class="mb-10">Eliminar</a>
                         </div>
                     </td>
