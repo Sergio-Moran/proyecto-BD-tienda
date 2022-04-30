@@ -23,7 +23,7 @@ class Index extends Component
                     ->orWhere('proveedores.nombres', 'like', "%{$this->valor}%")
                     ->orWhere('unidades_de_medidas.descripcion', 'like', "%{$this->valor}%");
             })
-            ->join('proveedores', 'proveedores.codigo', '=', 'productos.cod_proveedor_fk')
+            ->join('proveedores', 'proveedores.id', '=', 'productos.cod_proveedor_fk')
             ->join('unidades_de_medidas', 'unidades_de_medidas.codigo', '=', 'productos.cod_unidad_medida_fk')
             ->limit($this->porPagina)
             ->get();

@@ -57,15 +57,14 @@ class ProveedoresController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\proveedores  $proveedores
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
         $datos = proveedores::findOrFail($id);
-        return $datos;
-        return view('ReporteDos.editar', compact('datos'));
+        return view('Proveedores.editar', compact('datos'));
     }
 
     /**
@@ -75,9 +74,13 @@ class ProveedoresController extends Controller
      * @param  \App\Models\proveedores  $proveedores
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, proveedores $proveedores)
+    public function update(Request $request, $id)
     {
         //
+        $datos = $request->except(['_token', '_method']);
+        proveedores::where('id', '=', $id)
+            ->update($datos);
+        return redirect('/Proveedor')->with('message', 'Información Actualizada Correctamente ✔️');
     }
 
     /**

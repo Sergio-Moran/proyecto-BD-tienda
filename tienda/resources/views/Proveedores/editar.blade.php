@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content_header')
-    <x-header titulo="EDITAR" />
     @if ($errors->any())
         <div class="alert alert-error shadow-lg" role="alert">
             <ul>
@@ -12,7 +11,7 @@
     @endif
 @endsection
 @section('content')
-    <form action="{{ url('/Proveedor/' . $datos->codigo) }}" enctype="multipart/form-data" method="post">
+    <form action="{{ url('/Proveedor/' . $datos->id) }}" enctype="multipart/form-data" method="post">
         @method('PATCH')
         @csrf
         @include('Proveedores.formulario')
