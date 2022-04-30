@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\inventario_productos;
 use App\Models\productos;
+use App\Models\proveedores;
 use Illuminate\Http\Request;
 use Illuminate\View\ViewServiceProvider;
 
@@ -72,9 +73,19 @@ class InventarioProductosController extends Controller
      * @param  \App\Models\inventario_productos  $inventario_productos
      * @return \Illuminate\Http\Response
      */
-    public function edit(inventario_productos $inventario_productos)
+    public function edit($id)
     {
         //
+        $datos = inventario_productos::findOrFail($id);
+        $productos = productos::where('id','=',$datos['cod_producto_fk'])
+            ->get();
+        return view(
+            'Inventario.editar',
+            compact('datos'),
+            [
+                'productos' => $productos,
+            ]
+        );
     }
 
     /**

@@ -14,7 +14,7 @@ class CreateInventarioProductosTable extends Migration
     public function up()
     {
         Schema::create('inventario_productos', function (Blueprint $table) {
-            $table->bigIncrements('codigo');
+            $table->bigIncrements('id');
             $table->string('descripcion');
             $table->double('cantidad');
             $table->foreignId('cod_producto_fk')

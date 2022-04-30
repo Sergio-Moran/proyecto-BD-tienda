@@ -2,29 +2,31 @@
     <header class="pb-6 pt-8">
         <div class="navbar bg-base-100">
             <div class="navbar-start">
-            
-            <div class="navbar-center">
-                <a class="btn btn-ghost normal-case text-xl">Registro de Productos al Inventario</a>
+
+                <div class="navbar-center">
+                    <a class="btn btn-ghost normal-case text-xl">Registro de Productos al Inventario</a>
+                </div>
+
             </div>
-        
-        </div>
         </div>
     </header>
     <div class="form-row form-row shadow-md bg-auto rounded-lg" style="margin: 2ch; padding: 3ch">
         <div class="grid grid-cols-2 gap-4">
-            <label for="Nombre">Descripcion</label>            
-            <input type="text" placeholder="Descripcion" name="descripcion" class="input input-bordered">
-            
-            <label for="Nombre">Cantidad</label>
-            <input type="text" placeholder="Cantidad" name="cantidad" class="input input-bordered">
+            <label for="Nombre">Descripcion</label>
+            <input type="text" placeholder="Descripcion" name="descripcion" class="input input-bordered"
+                value="{{ $datos->descripcion }}">
 
-            <label for="Nombre">Nombre del Producto</label>           
+            <label for="Nombre">Cantidad</label>
+            <input type="text" placeholder="Cantidad" name="cantidad" class="input input-bordered"
+                value="{{ $datos->cantidad }}">
+
+            <label for="Nombre">Nombre del Producto</label>
             <select class="input input-bordered" name="cod_producto_fk" id="" option="Medida">
-            @foreach ($productos as $producto)
-            <option value="{{$producto->id}}">{{$producto->nombres}}</option>    
-            @endforeach
+                @foreach ($productos as $producto)
+                    <option value="{{ $producto->id }}">{{ $producto->nombres }}</option>
+                @endforeach
             </select>
-    </div>
+        </div>
 
     </div>
     <br>
