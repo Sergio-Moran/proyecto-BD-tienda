@@ -18,7 +18,7 @@
                 <th>Correo</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
-                <th>Editar</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
@@ -32,10 +32,13 @@
                     <td>{{ $proveedor->telefono }}</td>
                     <td>{{ $proveedor->direccion }}</td>
                     <td>
-                        <div class="grid justify-items-center mt-5" style="margin: 2ch">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5" style="margin: 2ch">
                             <a class="btn btn-outline btn-error"
                                 href="{{ url('/Proveedor/' . $proveedor->id . '/edit') }}"
                                 class="mb-10">Editar</a>
+                            <a class="btn btn-outline btn-error" onclick="return confirm('¿Desea eliminar el registro?')" type="submit"
+                                href="{{ url('/Proveedor/' . $proveedor->id . '/destroy') }}"
+                                class="mb-10">Eliminar</a>
                         </div>
                     </td>
                 </tr>

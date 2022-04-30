@@ -24,6 +24,8 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
+Route::get('/Proveedor/{id}/destroy', [ProveedoresController::class, 'destroy'])->name('destroy');
+
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
     ->name('inicio.index');
 

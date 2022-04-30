@@ -89,8 +89,11 @@ class ProveedoresController extends Controller
      * @param  \App\Models\proveedores  $proveedores
      * @return \Illuminate\Http\Response
      */
-    public function destroy(proveedores $proveedores)
+    public function destroy($id)
     {
         //
+        proveedores::where('id', '=', $id)
+            ->delete();
+        return redirect('/Proveedor')->with('message', 'Registro Eliminado ✔️');
     }
 }
