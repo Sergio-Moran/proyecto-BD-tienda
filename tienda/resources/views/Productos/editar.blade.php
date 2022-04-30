@@ -11,7 +11,7 @@
     @endif
 @endsection
 @section('content')
-    <form action="{{ url('/Productos/' . $datos->codigo) }}" enctype="multipart/form-data" method="post">
+    <form action="{{ url('/Productos/' . $datos->id) }}" enctype="multipart/form-data" method="post">
         @method('PATCH')
         @csrf
         @include('Productos.formulario')

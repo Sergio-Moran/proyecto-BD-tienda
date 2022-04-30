@@ -115,7 +115,6 @@ class ProductosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return $request;
         $datos = $request->except(['_token', '_method']);
         productos::where('id', '=', $id)
             ->update($datos);
