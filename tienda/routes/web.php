@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\Reportes;
 use App\Http\Controllers\RolUsuarioController;
+use App\Http\Controllers\UnidadesDeMedidaController;
 use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,10 @@ Route::resource('/Ventas', VentasController::class)
 Route::resource('/Proveedor', ProveedoresController::class)
     ->middleware('auth')
     ->names('proveedor.inicio');
+
+    Route::resource('/Medida', UnidadesDeMedidaController::class)
+    ->middleware('auth')
+    ->names('medida.inicio');
 
 Route::resource('/RolUsuarios', RolUsuarioController::class)
     ->middleware('auth')

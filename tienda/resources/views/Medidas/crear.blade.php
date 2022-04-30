@@ -11,9 +11,9 @@
     @endif
 @endsection
 @section('content')
-    <form method="POST" action="{{ url('/Proveedor/') }}"  role="form" enctype="multipart/form-data">
+    <form method="POST" action="{{ url('/Medida/') }}"  role="form" enctype="multipart/form-data">
         @csrf
-        @include('Proveedores.formulario')
+        @include('Medida.formulario')
     </form>
 
     <script src="{{ asset('js/app.js') }}" defer></script>

@@ -15,6 +15,7 @@ class UnidadesDeMedidaController extends Controller
     public function index()
     {
         //
+        return view('Medidas.index');
     }
 
     /**

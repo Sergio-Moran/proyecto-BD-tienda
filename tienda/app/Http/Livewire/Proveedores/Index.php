@@ -10,8 +10,7 @@ class Index extends Component
 
     public $valor = "";
     public $porPagina = 100;
-
-
+    
     public function render()
     {
         $proveedores = proveedores::select('*')

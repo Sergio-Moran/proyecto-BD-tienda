@@ -13,6 +13,11 @@
                 class="text-2xl font-bold mb-2 cursor-pointer text-[#EC5252] duration-150">TIENDA</a>
             <ul>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
+                    <a class="btn btn-primary" name="btn-" id="btn-" type="button" href="{{ url('/Medida') }}">
+                        <i class="">📦 Medidas</i>
+                    </a>
+                </li>
+                <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn btn-primary" name="btn-" id="btn-" type="button" href="{{ url('/Productos/Show') }}">
                         <i class="">📦 Productos</i>
                     </a>
