@@ -26,6 +26,7 @@ class ClientesController extends Controller
     public function create()
     {
         //
+        return view('Clientes.crear');
     }
 
     /**
@@ -90,4 +91,10 @@ class ClientesController extends Controller
     {
         return view('Reportes.index');
     }
+
+    public function cliente()
+    {
+        return view('Clientes.indexClientes');
+    }
+
 }
