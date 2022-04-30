@@ -15,10 +15,7 @@
         <thead>
             <tr>
                 <th>Codigo</th>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
+                <th>Descripción</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -28,10 +25,7 @@
             @foreach ($medidas as $medida)
                 <tr>
                     <th>{{ $medida->codigo }}</th>
-                    <td>{{ $medida->nombres }} {{ $proveedor->apellidos }}</td>
-                    <td>{{ $medida->correo }}</td>
-                    <td>{{ $medida->telefono }}</td>
-                    <td>{{ $medida->direccion }}</td>
+                    <td>{{ $medida->descripcion }}</td>
                     <td>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5" style="margin: 2ch">
                             <a class="btn btn-outline btn-error"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\unidades_de_medida;
+use App\Models\unidades_de_medidas;
 use Illuminate\Http\Request;
 
 class UnidadesDeMedidaController extends Controller
@@ -38,6 +39,9 @@ class UnidadesDeMedidaController extends Controller
     public function store(Request $request)
     {
         //
+        $datos = $request->except('_token');
+        unidades_de_medidas::insert($datos);
+        return view('Medidas.index');
     }
 
     /**
@@ -57,9 +61,11 @@ class UnidadesDeMedidaController extends Controller
      * @param  \App\Models\unidades_de_medida  $unidades_de_medida
      * @return \Illuminate\Http\Response
      */
-    public function edit(unidades_de_medida $unidades_de_medida)
+    public function edit($id)
     {
         //
+        $datos = unidades_de_medidas::findOrFail($id);
+        return view('Medidas.editar', compact('datos'));
     }
 
     /**
@@ -69,9 +75,13 @@ class UnidadesDeMedidaController extends Controller
      * @param  \App\Models\unidades_de_medida  $unidades_de_medida
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, unidades_de_medida $unidades_de_medida)
+    public function update(Request $request, $id)
     {
         //
+        $datos = $request->except(['_token', '_method']);
+        unidades_de_medidas::where('id', '=', $id)
+            ->update($datos);
+        return redirect('/Medida')->with('message', 'Información Actualizada Correctamente ✔️');
     }
 
     /**
