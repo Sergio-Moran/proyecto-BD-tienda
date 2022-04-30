@@ -26,6 +26,7 @@ class UnidadesDeMedidaController extends Controller
     public function create()
     {
         //
+        return view('Medidas.crear');
     }
 
     /**

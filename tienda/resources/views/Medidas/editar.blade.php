@@ -14,7 +14,7 @@
     <form action="{{ url('/Medida/' . $datos->id) }}" enctype="multipart/form-data" method="post">
         @method('PATCH')
         @csrf
-        @include('Medida.formulario')
+        @include('Medidas.formulario')
     </form>
     <script src="{{ asset('js/app.js') }}" defer></script>
 @endsection

@@ -13,7 +13,7 @@
 @section('content')
     <form method="POST" action="{{ url('/Medida/') }}"  role="form" enctype="multipart/form-data">
         @csrf
-        @include('Medida.formulario')
+        @include('Medidas.formulario')
     </form>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
