@@ -14,11 +14,11 @@
         <div class="grid grid-cols-2 gap-4">
             <label for="Nombre">Descripcion</label>
             <input type="text" placeholder="Descripcion" name="descripcion" class="input input-bordered"
-                value="{{ $datos->descripcion }}">
+                value="{{ $datos->descripcion ?? old('descripcion') }}">
 
             <label for="Nombre">Cantidad</label>
             <input type="text" placeholder="Cantidad" name="cantidad" class="input input-bordered"
-                value="{{ $datos->cantidad }}">
+                value="{{ $datos->cantidad ?? old('cantidad') }}">
 
             <label for="Nombre">Nombre del Producto</label>
             <select class="input input-bordered" name="cod_producto_fk" id="" option="Medida">

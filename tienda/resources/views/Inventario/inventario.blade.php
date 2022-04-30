@@ -23,7 +23,7 @@
         <tbody>
             @foreach ($inventario_productos as $inventario)
                 <tr>
-                    <th>{{ $inventario->codigo }}</th>
+                    <th>{{ $inventario->id }}</th>
                     <th>{{ $inventario->descripcion }}</th>
                     <td>{{ $inventario->cantidad }}</td>
                     <td>{{ $inventario->nombres }}</td>

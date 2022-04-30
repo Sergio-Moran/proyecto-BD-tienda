@@ -33,6 +33,8 @@ Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])->
 
 Route::get('/Cliente/{id}/destroy', [ClientesController::class, 'destroy'])->name('destroy');
 
+Route::get('/Inventario/{id}/destroy', [InventarioProductosController::class, 'destroy'])->name('destroy');
+
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
     ->name('inicio.index');
 

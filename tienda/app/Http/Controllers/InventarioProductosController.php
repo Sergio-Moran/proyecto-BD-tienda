@@ -30,15 +30,15 @@ class InventarioProductosController extends Controller
     public function create()
     {
         //
-       
+
         $productos = Productos::where(function ($query) {
             $query->where('nombres', 'like', "%{$this->valor}%")
                 ->orWhere('precio_venta', 'like', "%{$this->valor}%")
                 ->orWhere('precio_compra', 'like', "%{$this->valor}%");
         })
-        ->get();
+            ->get();
         //return $productos;
-        return view('Inventario.crear',['productos' => $productos]);
+        return view('Inventario.crear', ['productos' => $productos]);
     }
 
     /**
@@ -77,7 +77,7 @@ class InventarioProductosController extends Controller
     {
         //
         $datos = inventario_productos::findOrFail($id);
-        $productos = productos::where('id','=',$datos['cod_producto_fk'])
+        $productos = productos::where('id', '=', $datos['cod_producto_fk'])
             ->get();
         return view(
             'Inventario.editar',
@@ -95,9 +95,13 @@ class InventarioProductosController extends Controller
      * @param  \App\Models\inventario_productos  $inventario_productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, inventario_productos $inventario_productos)
+    public function update(Request $request, $id)
     {
         //
+        $datos = $request->except(['_token', '_method']);
+        inventario_productos::where('id', '=', $id)
+            ->update($datos);
+        return redirect('/Inventario/Show')->with('message', 'Información Actualizada Correctamente ✔️');
     }
 
     /**
@@ -106,8 +110,11 @@ class InventarioProductosController extends Controller
      * @param  \App\Models\inventario_productos  $inventario_productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(inventario_productos $inventario_productos)
+    public function destroy($id)
     {
         //
+        inventario_productos::where('id', '=', $id)
+            ->delete();
+        return redirect('/Inventario/Show')->with('message', 'Registro Eliminado ✔️');
     }
 }
