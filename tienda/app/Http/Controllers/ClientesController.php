@@ -64,7 +64,7 @@ class ClientesController extends Controller
     public function edit($id)
     {
         //
-        $datos = proveedores::findOrFail($id);
+        $datos = clientes::findOrFail($id);
         return view('Clientes.editar', compact('datos'));
     }
 
@@ -75,9 +75,13 @@ class ClientesController extends Controller
      * @param  \App\Models\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, clientes $clientes)
+    public function update(Request $request, $id)
     {
         //
+        $datos = $request->except(['_token', '_method']);
+        clientes::where('id', '=', $id)
+            ->update($datos);
+        return redirect('/Cliente/lista')->with('message', 'Información Actualizada Correctamente ✔️');
     }
 
     /**
@@ -86,9 +90,12 @@ class ClientesController extends Controller
      * @param  \App\Models\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(clientes $clientes)
+    public function destroy($id)
     {
         //
+        clientes::where('id', '=', $id)
+            ->delete();
+        return redirect('/Cliente/lista')->with('message', 'Registro Eliminado ✔️');
     }
 
     public function reporte()
@@ -100,5 +107,4 @@ class ClientesController extends Controller
     {
         return view('Clientes.indexClientes');
     }
-
 }

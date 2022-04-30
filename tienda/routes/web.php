@@ -31,6 +31,8 @@ Route::get('/Medida/{id}/destroy', [UnidadesDeMedidaController::class, 'destroy'
 
 Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])->name('destroy');
 
+Route::get('/Cliente/{id}/destroy', [ClientesController::class, 'destroy'])->name('destroy');
+
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
     ->name('inicio.index');
 
