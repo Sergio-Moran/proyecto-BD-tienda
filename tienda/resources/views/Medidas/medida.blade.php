@@ -16,7 +16,7 @@
             <tr>
                 <th>Codigo</th>
                 <th>Descripción</th>
-                <th>Acciones</th>
+                <th>Editar</th>
             </tr>
         </thead>
 
@@ -24,16 +24,16 @@
 
             @foreach ($medidas as $medida)
                 <tr>
-                    <th>{{ $medida->codigo }}</th>
+                    <th>{{ $medida->id }}</th>
                     <td>{{ $medida->descripcion }}</td>
                     <td>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5" style="margin: 2ch">
+                        <div class="grid justify-items-center mt-5" style="margin: 2ch">
                             <a class="btn btn-outline btn-error"
-                                href="{{ url('/Medida/' . $medida->codigo . '/edit') }}"
+                                href="{{ url('/Medida/' . $medida->id . '/edit') }}"
                                 class="mb-10">Editar</a>
-                            <a class="btn btn-outline btn-error" onclick="return confirm('¿Desea eliminar el registro?')"
-                                type="submit" href="{{ url('/Medida/' . $medida->codigo . '/destroy') }}"
-                                class="mb-10">Eliminar</a>
+                            {{-- <a class="btn btn-outline btn-error" onclick="return confirm('¿Desea eliminar el registro?')"
+                                type="submit" href="{{ url('/Medida/' . $medida->id . '/destroy') }}"
+                                class="mb-10">Eliminar</a> --}}
                         </div>
                     </td>
                 </tr>

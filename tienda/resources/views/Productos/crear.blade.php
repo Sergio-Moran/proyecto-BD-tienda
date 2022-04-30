@@ -12,10 +12,6 @@
     @endif
 @endsection
 @section('content')
-{{--     <form action="{{ url('productos.store') }}" method="post" enctype="multipart/form-data" class="mb-16">
-        @csrf
-        @include('Productos.formulario')
-    </form> --}}
     <form method="POST" action="{{ url('/Productos/') }}"  role="form" enctype="multipart/form-data">
         @csrf
         @include('Productos.formulario')

@@ -90,8 +90,11 @@ class UnidadesDeMedidaController extends Controller
      * @param  \App\Models\unidades_de_medida  $unidades_de_medida
      * @return \Illuminate\Http\Response
      */
-    public function destroy(unidades_de_medida $unidades_de_medida)
+    public function destroy($id)
     {
         //
+        unidades_de_medidas::where('id', '=', $id)
+            ->delete();
+        return redirect('/Medidas')->with('message', 'Registro Eliminado ✔️');
     }
 }

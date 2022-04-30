@@ -112,9 +112,14 @@ class ProductosController extends Controller
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, productos $productos)
+    public function update(Request $request, $id)
     {
         //
+        return $request;
+        $datos = $request->except(['_token', '_method']);
+        productos::where('id', '=', $id)
+            ->update($datos);
+        return redirect('/Productos')->with('message', 'Información Actualizada Correctamente ✔️');
     }
 
     /**

@@ -27,6 +27,8 @@ Route::get('/', function () {
 
 Route::get('/Proveedor/{id}/destroy', [ProveedoresController::class, 'destroy'])->name('destroy');
 
+Route::get('/Medida/{id}/destroy', [UnidadesDeMedidaController::class, 'destroy'])->name('destroy');
+
 Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])->name('destroy');
 
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
@@ -66,7 +68,7 @@ Route::resource('/Proveedor', ProveedoresController::class)
     ->middleware('auth')
     ->names('proveedor.inicio');
 
-    Route::resource('/Medida', UnidadesDeMedidaController::class)
+Route::resource('/Medida', UnidadesDeMedidaController::class)
     ->middleware('auth')
     ->names('medida.inicio');
 
