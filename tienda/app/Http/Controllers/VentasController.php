@@ -138,13 +138,10 @@ class VentasController extends Controller
 
         detalles_facturas::insert($datos);
 
-        $productos = productos::where(function ($query) {
-            $query->where('nombres', 'like', "%{$this->valor}%")
-                ->orWhere('precio_venta', 'like', "%{$this->valor}%")
-                ->orWhere('precio_compra', 'like', "%{$this->valor}%");
-        })
+        $productos = detalles_facturas::where('cod_factura_fk', '=', $id)
+            ->join('productos', 'detalles_facturas.cod_producto_fk', '=', 'productos.id')
             ->get();
-
+        /* return $productos; */
         return view('Ventas.crear', ['id' => $id, 'productos' => $productos]);
     }
 }
