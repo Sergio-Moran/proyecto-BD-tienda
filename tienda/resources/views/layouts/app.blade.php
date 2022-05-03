@@ -48,7 +48,7 @@
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-secondary-focus form-control" style="padding-right: 48px" name="btn-" id="btn-"
                         type="button" href="{{ url('/Ventas/Show') }}">
-                        <i class="">💵 Ventas</i>
+                        <i class="">💵 Vender</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
