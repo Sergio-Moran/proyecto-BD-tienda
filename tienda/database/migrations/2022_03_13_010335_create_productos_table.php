@@ -21,12 +21,12 @@ class CreateProductosTable extends Migration
             $table->boolean('estado')->default(0);
             $table->foreignId('cod_proveedor_fk')
                 ->nullable(true)
-                ->constrained('proveedores', 'codigo')
+                ->constrained('proveedores', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->foreignId('cod_unidad_medida_fk')
                 ->nullable(true)
-                ->constrained('unidades_de_medidas', 'codigo')
+                ->constrained('unidades_de_medidas', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->timestamps();
