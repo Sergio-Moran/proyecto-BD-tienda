@@ -14,15 +14,15 @@ class CreateDetallesFacturasTable extends Migration
     public function up()
     {
         Schema::create('detalles_facturas', function (Blueprint $table) {
-            $table->bigIncrements('codigo');
+            $table->bigIncrements('id');
             $table->foreignId('cod_producto_fk')
                 ->nullable(true)
-                ->constrained('productos', 'codigo')
+                ->constrained('productos', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->foreignId('cod_factura_fk')
                 ->nullable(true)
-                ->constrained('facturas', 'codigo')
+                ->constrained('facturas', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->double('cantidad');
