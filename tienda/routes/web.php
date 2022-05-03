@@ -33,6 +33,10 @@ Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])->
 
 Route::get('/Cliente/{id}/destroy', [ClientesController::class, 'destroy'])->name('destroy');
 
+Route::get('/Ventas/{id}/destroy', [VentasController::class, 'destroy'])->name('destroy');
+
+Route::get('/Ventas/{id}/vendido', [VentasController::class, 'vendido'])->name('vendido');
+
 Route::get('/Inventario/{id}/destroy', [InventarioProductosController::class, 'destroy'])->name('destroy');
 
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
@@ -50,6 +54,9 @@ Route::get('/Cliente/usuarios', [ClientesController::class, 'create'])
 Route::post('/Cliente/store', [ClientesController::class, 'usuario']);
 
 Route::get('/Cliente/Perfil', [ClientesController::class, 'perfil'])
+    ->name('cliente.perfil');
+
+Route::post('/Ventas/Carrito', [VentasController::class, 'carrito'])
     ->name('cliente.perfil');
 
 Route::get('/ReporteUno', [Reportes::class, 'reporteUno'])
