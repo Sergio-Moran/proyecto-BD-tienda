@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\clientes;
+use App\Models\detalles_facturas;
+use App\Models\facturas;
 use App\Models\productos;
 use App\Models\ventas;
 use Illuminate\Http\Request;
@@ -35,14 +38,30 @@ class VentasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public $valor= "";
     public function store(Request $request)
     {
         //
-        $datos = $request->except('_token');
-        $datos['cod_usuario'] = request()->user()->id;
-        return $datos;
 
-//        return $request;
+        $datos = $request->except('_token');
+        $datos['cod_usuario_fk'] = request()->user()->id;
+
+       facturas::insert($datos);
+
+        $id = facturas::orderBy('id', 'desc')->first();
+        $clientes = clientes::where(function ($query) {
+            $query->where('nombre', 'like', "%{$this->valor}%");
+        })
+        ->get();
+        $productos = productos::where(function ($query) {
+            $query->where('nombres', 'like', "%{$this->valor}%")
+                ->orWhere('precio_venta', 'like', "%{$this->valor}%")
+                ->orWhere('precio_compra', 'like', "%{$this->valor}%");
+        })
+        ->get();
+
+
+        return view('Ventas.crear',['id'=>$id['id'], 'clientes'=>$clientes, 'productos'=>$productos]);
     }
 
     /**
@@ -86,8 +105,45 @@ class VentasController extends Controller
      * @param  \App\Models\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ventas $ventas)
+    public function destroy($id)
     {
         //
+        detalles_facturas::where('cod_factura_fk', '=', $id)
+            ->delete();
+        facturas::where('id', '=', $id)
+            ->delete();
+        return redirect('/Inicio/index')->with('message', 'Registro Eliminado ✔️');
+    }
+
+    public function vendido($id)
+    {
+        //
+
+        $suma =  detalles_facturas::where('cod_factura_fk', '=', $id)->sum('subtotal');
+        facturas::where('id','=',$id)->update(['total'=>$suma]);
+        facturas::where('id','=',$id)->update(['estado_pagado'=>true]);
+
+        return redirect('/Inicio/index')->with('message', 'Registro Eliminado ✔️');
+    }
+
+    public function carrito(Request $request){
+        $datos = $request->except('_token');
+        $id = $datos['cod_factura_fk'];
+        $precios = productos::where('id','=',$datos['cod_producto_fk'])->get();
+        foreach($precios as $precio){
+            $res=$precio->precio_venta;
+        }
+        $datos['subtotal'] = $datos['cantidad'] * $res;
+
+        detalles_facturas::insert($datos);
+
+        $productos = productos::where(function ($query) {
+            $query->where('nombres', 'like', "%{$this->valor}%")
+                ->orWhere('precio_venta', 'like', "%{$this->valor}%")
+                ->orWhere('precio_compra', 'like', "%{$this->valor}%");
+        })
+        ->get();
+        
+        return view('Ventas.crear',['id'=>$id,'productos'=>$productos]);   
     }
 }
