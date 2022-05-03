@@ -14,10 +14,10 @@ class CreateFacturasTable extends Migration
     public function up()
     {
         Schema::create('facturas', function (Blueprint $table) {
-            $table->bigIncrements('codigo');
+            $table->bigIncrements('id');
             $table->foreignId('cod_cliente_fk')
                 ->nullable(true)
-                ->constrained('clientes', 'codigo')
+                ->constrained('clientes', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->string('ciudad');
