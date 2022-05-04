@@ -13,7 +13,7 @@
                 <th>Descripcion</th>
                 <th>Total</th>
                 <th>Emitida Por</th>
-                <th>Estado</th>
+                {{-- <th>Estado</th> --}}
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
                     <td>{{ $factura->descripcion }}</td>
                     <td>Q. {{ $factura->total }}</td>
                     <td>{{ $factura->name }}</td>
-                    <td>{{ $factura->estado_pagado }}</td>
+                    {{-- <td>{{ $factura->estado_pagado }}</td> --}}
                     <td>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5" style="margin: 2ch">
                             <a target="blank" class="btn btn-outline btn-primary"
