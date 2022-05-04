@@ -15,10 +15,12 @@ class Reportes extends Controller
     public function factura($id)
     {
 
-        $facturas = detalles_facturas::selectRaw('facturas.total, clientes.nombre, clientes.apellido, 
-                        facturas.descripcion, facturas.ciudad,users.name, clientes.nit,productos.nombres, 
-                        productos.precio_venta, detalles_facturas.cantidad, detalles_facturas.subtotal, 
-                        productos.precio_compra, productos.estado, productos.id as idProductos')
+        $facturas = detalles_facturas::selectRaw(
+            'facturas.total, clientes.nombre, clientes.apellido, 
+            facturas.descripcion, facturas.ciudad,users.name, clientes.nit,productos.nombres, 
+            productos.precio_venta, detalles_facturas.cantidad, detalles_facturas.subtotal, 
+            productos.precio_compra, productos.estado, productos.id as idProductos'
+        )
             ->join('facturas', 'facturas.id', '=', 'detalles_facturas.cod_factura_fk')
             ->join('users', 'users.id', '=', 'facturas.cod_usuario_fk')
             ->join('clientes', 'clientes.id', '=', 'facturas.cod_cliente_fk')
@@ -70,12 +72,6 @@ class Reportes extends Controller
 
     public function reporteDos()
     {
-        /* SELECT productos.nombres, SUM(detalles_facturas.cantidad) as cantidadVenta FROM detalles_facturas, facturas, productos
-        WHERE detalles_facturas.cod_factura_fk = facturas.id
-        AND detalles_facturas.cod_producto_fk = productos.id
-        AND facturas.estado_pagado = 1
-        GROUP BY detalles_facturas.cod_producto_fk
-        ORDER BY cantidadVenta DESC */
 
         $datos = detalles_facturas::selectRaw('productos.nombres, SUM(detalles_facturas.cantidad) as cantidadVenta')
             ->join('facturas', 'facturas.id', '=', 'detalles_facturas.cod_factura_fk')
@@ -95,17 +91,11 @@ class Reportes extends Controller
     public function reporteTres()
     {
 
-        /* SELECT inventario_productos.id, descripcion, productos.nombres,  cantidad,
-        IFNULL(inventario_productos.updated_at,'Sin modificaciones')  AS actualizaciones 
-        FROM inventario_productos, productos
-        WHERE inventario_productos.cod_producto_fk = productos.id */
-
-        $datos = inventario_productos::selectRaw('inventario_productos.id, descripcion, productos.nombres,  cantidad')
-  
+        $datos = inventario_productos::selectRaw('inventario_productos.id, inventario_productos.updated_at, descripcion, productos.nombres,  cantidad')
             ->join('productos', 'inventario_productos.cod_producto_fk', '=', 'productos.id')
             ->get();
 
-            return $datos;
+        /* return $datos; */
 
         $pdf = PDF::loadView('Reportes.reporteTres', compact('datos'))
             ->setPaper("legal", 'landscape')
@@ -116,20 +106,15 @@ class Reportes extends Controller
 
     public function reporteCuatro()
     {
-        /* SELECT clientes.nombre, SUM(facturas.cod_cliente_fk) as ventas 
-        FROM facturas, clientes
-        WHERE facturas.cod_cliente_fk = clientes.id
-        GROUP BY clientes.nombre
-        ORDER BY ventas DESC */
 
         $datos = facturas::selectRaw('clientes.nombre, SUM(facturas.estado_pagado) as compras ')
             ->join('clientes', 'facturas.cod_cliente_fk', '=', 'clientes.id')
-            ->where('facturas.estado_pagado','=',1)
+            ->where('facturas.estado_pagado', '=', 1)
             ->groupBy('clientes.nombre')
             ->orderBy('compras', 'desc')
             ->get();
 
-        return $datos;
+        /* return $datos; */
 
         $pdf = PDF::loadView('Reportes.reporteCuatro', compact('datos'))
             ->setPaper("legal", 'landscape')
