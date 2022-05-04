@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\detalles_facturas;
 use App\Models\facturas;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class Reportes extends Controller
@@ -36,7 +37,25 @@ class Reportes extends Controller
 
     public function reporteUno()
     {
-        $pdf = PDF::loadView('Reportes.reporteUno'/*, compact('') */)
+       /*  SELECT productos.nombres, SUM(detalles_facturas.cantidad) ventas
+        FROM detalles_facturas, facturas, productos
+        WHERE detalles_facturas.cod_factura_fk = facturas.id
+        AND detalles_facturas.cod_producto_fk = productos.id
+        AND DATE_FORMAT(facturas.updated_at, '%Y-%m-%d') 
+        BETWEEN '' AND '2022-05-04'
+        GROUP BY productos.nombres
+        ORDER BY ventas DESC */
+
+        $date= Carbon::now();
+        $datos=detalles_facturas::selectRaw('productos.nombres, SUM(detalles_facturas.cantidad) as ventas')
+        ->join('facturas', 'facturas.id', '=', 'detalles_facturas.cod_factura_fk')
+        ->join('productos', 'detalles_facturas.cod_producto_fk', '=', 'productos.id')
+        ->whereBetween('facturas.updated_at',['2022-01-01', $date])/* ->format('Y-m-d') */
+        ->groupBy('productos.nombres')
+        ->orderBy('ventas', 'desc')
+        ->get();
+        
+        $pdf = PDF::loadView('Reportes.reporteUno', compact('datos'))
             ->setPaper("legal", 'landscape')
             ->stream('.pdf');
 
@@ -59,7 +78,7 @@ class Reportes extends Controller
         ->groupBy('detalles_facturas.cod_producto_fk')
         ->orderBy('cantidadVenta', 'desc')
         ->get();
-        
+
         $pdf = PDF::loadView('Reportes.reporteDos', compact('datos'))
             ->setPaper("legal", 'landscape')
             ->stream('.pdf');

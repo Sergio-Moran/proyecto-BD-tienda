@@ -26,7 +26,30 @@
         }
     </style>
 </head>
-<body>
-    hola
+<div align="center">
+    <div>
+        <h1>Tienda</h1>
+        <b>
+            <h2 for="">Reporde Venta de productos por periodo de tiempo </h2>
+        </b>
+    </div>
+</div>
+<br>
+
+<body class="">
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Nombre del Producto</th>
+            <th>Cantidad Vendida</th>
+        </tr>
+        <br>
+        @foreach ($datos as $dato)
+            <tr>
+                <th>{{ $dato->nombres }}</th>
+                <th>{{ $dato->ventas }} Unidades</th>
+            </tr>
+        @endforeach
+    </table>
 </body>
+
 </html>
