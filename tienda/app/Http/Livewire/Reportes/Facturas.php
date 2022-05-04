@@ -16,7 +16,7 @@ class Facturas extends Component
         ->join('clientes', 'clientes.id', '=', 'facturas.cod_cliente_fk')
         ->limit($this->porPagina)
         ->get();
-
+        /* dd($facturas); */
         return view('Facturas.factura', ['facturas' => $facturas]);
     }
 }

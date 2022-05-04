@@ -64,6 +64,9 @@ Route::get('/Cliente/Perfil', [ClientesController::class, 'perfil'])
 Route::post('/Ventas/Carrito', [VentasController::class, 'carrito'])
     ->name('cliente.perfil');
 
+Route::get('/Factura/{id}', [Reportes::class, 'factura'])
+    ->name('factura');
+
 Route::get('/ReporteUno', [Reportes::class, 'reporteUno'])
     ->name('reporteUno');
 
@@ -86,7 +89,7 @@ Route::resource('/Ventas', VentasController::class)
 Route::resource('/Proveedor', ProveedoresController::class)
     ->middleware('auth')
     ->names('proveedor.inicio');
-    
+
 Route::resource('/Facturas', FacturasController::class)
     ->middleware('auth')
     ->names('facturas.inicio');

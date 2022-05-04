@@ -32,7 +32,7 @@
                     <td>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5" style="margin: 2ch">
                             <a target="blank" class="btn btn-outline btn-primary"
-                                href="{{ url('/ReporteUno') }}"
+                                href="{{ url('/Factura/'.$factura->id) }}"
                                 class="mb-10">Imprimir</a>
                         </div>
                     </td>
