@@ -12,14 +12,12 @@
                 solicitados</a>
         </div>
         <div class="card-actions justify-center">
-            <a href="{{ url('/ReporteTres') }}" target="blank" class="btn btn-primary">Reporte 3</a>
+            <a href="{{ url('/ReporteTres') }}" target="blank" class="btn btn-primary">Disponibilidad de Inventario
+                actual</a>
         </div>
         <div class="card-actions justify-center">
             <a href="{{ url('/ReporteCuatro') }}" target="blank" class="btn btn-primary">Reporte de clientes con
                 mayores compras</a>
-        </div>
-        <div class="card-actions justify-center">
-            <a href="{{ url('/ReporteCinco') }}" target="blank" class="btn btn-primary">Reporte 5</a>
         </div>
     </div>
 </div>

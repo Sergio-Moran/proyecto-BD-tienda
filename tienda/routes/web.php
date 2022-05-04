@@ -85,8 +85,8 @@ Route::get('/ReporteTres', [Reportes::class, 'reporteTres'])
 Route::get('/ReporteCuatro', [Reportes::class, 'reporteCuatro'])
     ->name('reporteCuatro');
 
-Route::get('/ReporteCinco', [Reportes::class, 'reporteCinco'])
-    ->name('reporteCinco');
+/* Route::get('/ReporteCinco', [Reportes::class, 'reporteCinco'])
+    ->name('reporteCinco'); */
 
 Route::resource('/Productos', ProductosController::class)
     ->middleware('auth')
