@@ -4,7 +4,7 @@
             <a href="{{ url('Facturas/index') }}" class="btn btn-primary">Reporte de Facturas</a>
         </div>
         <div class="card-actions justify-center">
-            <a href="{{ url('/ReporteUno') }}" target="blank" class="btn btn-primary">Venta de productos por
+            <a href="{{ url('Cliente/Reportes/datos') }}" target="blank" class="btn btn-primary">Venta de productos por
                 periodo de tiempo</a>
         </div>
         <div class="card-actions justify-center">
