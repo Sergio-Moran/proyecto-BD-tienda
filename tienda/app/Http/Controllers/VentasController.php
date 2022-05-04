@@ -145,12 +145,13 @@ class VentasController extends Controller
                 ->orWhere('precio_compra', 'like', "%{$this->valor}%");
         })
             ->get();
+
         $tabProductos = detalles_facturas::where('cod_factura_fk', '=', $id)
             ->join('productos', 'detalles_facturas.cod_producto_fk', '=', 'productos.id')
             ->get();
 
-/* 
-         return $productos;  */
+
+        /* return $productos; */
         return view('Ventas.crear', ['id' => $id, 'productos' => $productos, 'tabProductos' => $tabProductos]);
     }
 }

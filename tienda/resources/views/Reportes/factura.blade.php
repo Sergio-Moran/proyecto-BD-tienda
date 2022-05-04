@@ -22,62 +22,68 @@
             text-align: center;
         }
 
-        td {
-            border: 1px solid black;
-            margin: 0;
-            height: 50px;
-        }
-
         .titulo {
             background-color: rgb(216, 216, 216);
         }
 
     </style>
 </head>
+<div align="center">
+    <div>
+        <h1>Tienda</h1>
+        <b>
+            <label for="">Generado por: </label>
+        </b>
+        <label for="">{{ $facturas[0]->name }}</label>
+    </div>
+    <div>
+        <b>
+            <label for="">Nombre del cliente: </label>
+        </b>
+        <label for="">{{ $facturas[0]->nombre }} {{ $facturas[0]->apellido }} </label>
+    </div>
+    <div>
+        <b>
+            <label for="">Nit: </label>
+        </b>
+        <label for="">{{ $facturas[0]->nit }}</label>
+    </div>
+    <div>
+        <b>
+            <label for="">Ciudad: </label>
+        </b>
+        <label for="">{{ $facturas[0]->ciudad }}</label>
+    </div>
+    <div>
+        <b>
+            <label for="">Descripción: </label>
+        </b>
+        <label for="">{{ $facturas[0]->descripcion }}</label>
+    </div>
+</div>
+<br>
 
 <body class="">
-    <h1>Factura</h1>
-    <div class="overflow-x-auto" style="margin: 2ch;  padding: 3ch">
-        <table class="table table-zebra w-full">
-            <!-- head -->
-            <thead>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Nombres</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Nit</th>
-                    <th>DPI</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>contendido</th>
-                </tr>
-                {{-- @foreach ($clientes as $cliente)
-                <tr>
-                    <th>{{ $cliente->id }}</th>
-                    <th>{{ $cliente->nombre }} {{ $cliente->apellido }}</th>
-                    <td>{{ $cliente->correo }}</td>
-                    <td>{{ $cliente->telefono }}</td>
-                    <td>{{ $cliente->direccion }}</td>
-                    <td>{{ $cliente->nit }}</td>
-                    <td>{{ $cliente->dpi }}</td>
-                    <td>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5" style="margin: 2ch">
-                            <a class="btn btn-outline btn-error"
-                                href="{{ url('/Cliente/' . $cliente->id . '/edit') }}"
-                                class="mb-10">Editar</a>
-                            <a class="btn btn-outline btn-error" onclick="return confirm('¿Desea eliminar el registro?')"
-                                type="submit" href="{{ url('/Cliente/' . $cliente->id . '/destroy') }}"
-                                class="mb-10">Eliminar</a>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach --}}
-            </tbody>
-        </table>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Codigo</th>
+            <th>Nombres</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+        <br>
+        @foreach ($facturas as $factura)
+            <tr>
+                <th>{{ $factura->idProductos }}</th>
+                <th>{{ $factura->nombres }}</th>
+                <th>Q. {{ $factura->precio_venta }}</th>
+                <td>{{ $factura->cantidad }}</td>
+                <td>Q. {{ $factura->subtotal }}</td>
+            </tr>
+        @endforeach
+    </table>
+    <div align="center">
+        <h3>Total: Q. {{$facturas[0]->total}}</h3>
     </div>
 </body>
