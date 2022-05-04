@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\clientes;
 use App\Models\detalles_facturas;
 use App\Models\facturas;
+use App\Models\inventario_productos;
 use App\Models\productos;
 use App\Models\ventas;
 use Illuminate\Http\Request;
@@ -120,12 +121,21 @@ class VentasController extends Controller
     public function vendido($id)
     {
         //
-
         $suma =  detalles_facturas::where('cod_factura_fk', '=', $id)->sum('subtotal');
+        $cantidades =  detalles_facturas::select('cantidad', 'cod_producto_fk')->where('cod_factura_fk', '=', $id)->get();
+
+        foreach ($cantidades as $cantidad) {
+
+            $nuevaCantidad = inventario_productos::where('id', '=', $cantidad->cod_producto_fk)
+                ->selectRaw('cantidad - ? as cantidad', [$cantidad->cantidad])
+                ->get();
+            inventario_productos::where('id', '=', $cantidad->cod_producto_fk)
+                ->update(['cantidad' => $nuevaCantidad[0]->cantidad]);
+        }
         facturas::where('id', '=', $id)->update(['total' => $suma]);
         facturas::where('id', '=', $id)->update(['estado_pagado' => true]);
 
-        return redirect('/Inicio/index')->with('message', 'Registro Eliminado ✔️');
+        return redirect('/Inicio/index')->with('message', 'Registro hecho ✔️');
     }
 
     public function carrito(Request $request)
