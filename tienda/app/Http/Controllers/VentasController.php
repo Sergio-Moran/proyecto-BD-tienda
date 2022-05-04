@@ -129,8 +129,16 @@ class VentasController extends Controller
             $nuevaCantidad = inventario_productos::where('id', '=', $cantidad->cod_producto_fk)
                 ->selectRaw('cantidad - ? as cantidad', [$cantidad->cantidad])
                 ->get();
-            inventario_productos::where('id', '=', $cantidad->cod_producto_fk)
-                ->update(['cantidad' => $nuevaCantidad[0]->cantidad]);
+            if ($nuevaCantidad[0]->cantidad < 0) {
+                detalles_facturas::where('cod_factura_fk', '=', $id)
+                    ->delete();
+                facturas::where('id', '=', $id)
+                    ->delete();
+                return redirect()->back()->with('alert', 'Alerta!');
+            } else {
+                inventario_productos::where('id', '=', $cantidad->cod_producto_fk)
+                    ->update(['cantidad' => $nuevaCantidad[0]->cantidad]);
+            }
         }
         facturas::where('id', '=', $id)->update(['total' => $suma]);
         facturas::where('id', '=', $id)->update(['estado_pagado' => true]);
