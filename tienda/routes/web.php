@@ -26,26 +26,32 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
-Route::get('/Proveedor/{id}/destroy', [ProveedoresController::class, 'destroy'])->name('destroy');
+Route::get('/Proveedor/{id}/destroy', [ProveedoresController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Medida/{id}/destroy', [UnidadesDeMedidaController::class, 'destroy'])->name('destroy');
+Route::get('/Medida/{id}/destroy', [UnidadesDeMedidaController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])->name('destroy');
+Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Cliente/{id}/destroy', [ClientesController::class, 'destroy'])->name('destroy');
+Route::get('/Cliente/{id}/destroy', [ClientesController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Ventas/{id}/destroy', [VentasController::class, 'destroy'])->name('destroy');
+Route::get('/Ventas/{id}/destroy', [VentasController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Ventas/{id}/vendido', [VentasController::class, 'vendido'])->name('vendido');
+Route::get('/Ventas/{id}/vendido', [VentasController::class, 'vendido'])
+    ->name('vendido');
 
-Route::get('/Inventario/{id}/destroy', [InventarioProductosController::class, 'destroy'])->name('destroy');
+Route::get('/Inventario/{id}/destroy', [InventarioProductosController::class, 'destroy'])
+    ->name('destroy');
 
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
     ->name('inicio.index');
 
 Route::get('/Facturas/index', [FacturasController::class, 'index'])
     ->name('inicio.index');
-
 
 Route::get('/Cliente/lista', [ClientesController::class, 'cliente'])
     ->name('cliente.lista');
