@@ -38,13 +38,27 @@ class Reportes extends Controller
         return $pdf;
     }
 
-    public function reporteUno()
+    public function reporteUno(Request $request)
     {
+        /*  SELECT productos.nombres, SUM(detalles_facturas.cantidad) ventas
+        FROM detalles_facturas, facturas, productos
+        WHERE detalles_facturas.cod_factura_fk = facturas.id
+        AND detalles_facturas.cod_producto_fk = productos.id
+        AND DATE_FORMAT(facturas.updated_at, '%Y-%m-%d') 
+        BETWEEN '' AND '2022-05-04'
+        GROUP BY productos.nombres
+        ORDER BY ventas DESC */
+
+        $res = $request->except('_token');
+
+        $fechaini = $request->inicio;
+        $fechafin= $request->final;
+
         $date = Carbon::now();
         $datos = detalles_facturas::selectRaw('productos.nombres, SUM(detalles_facturas.cantidad) as ventas')
             ->join('facturas', 'facturas.id', '=', 'detalles_facturas.cod_factura_fk')
             ->join('productos', 'detalles_facturas.cod_producto_fk', '=', 'productos.id')
-            ->whereBetween('facturas.updated_at', ['2022-01-01', $date])/* ->format('Y-m-d') */
+            ->whereBetween('facturas.updated_at', [$fechaini, $fechafin])/* ->format('Y-m-d') */
             ->groupBy('productos.nombres')
             ->orderBy('ventas', 'desc')
             ->get();
@@ -107,5 +121,10 @@ class Reportes extends Controller
             ->stream('.pdf');
 
         return $pdf;
+    }
+
+
+    public function datos(){
+        return view('Reportes.datos');
     }
 }

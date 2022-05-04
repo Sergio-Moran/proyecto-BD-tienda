@@ -59,6 +59,9 @@ Route::get('/Cliente/lista', [ClientesController::class, 'cliente'])
 Route::get('/Cliente/Reportes', [ClientesController::class, 'reporte'])
     ->name('cliente.reportes');
 
+Route::get('/Cliente/Reportes/datos', [Reportes::class, 'datos'])
+    ->name('cliente.reportes');
+
 Route::get('/Cliente/usuarios', [ClientesController::class, 'create'])
     ->name('cliente.usuario');
 
@@ -73,7 +76,7 @@ Route::post('/Ventas/Carrito', [VentasController::class, 'carrito'])
 Route::get('/Factura/{id}', [Reportes::class, 'factura'])
     ->name('factura');
 
-Route::get('/ReporteUno', [Reportes::class, 'reporteUno'])
+Route::post('/ReporteUno', [Reportes::class, 'reporteUno'])
     ->name('reporteUno');
 
 Route::get('/ReporteDos', [Reportes::class, 'reporteDos'])
