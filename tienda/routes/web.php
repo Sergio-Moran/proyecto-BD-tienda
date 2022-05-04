@@ -70,6 +70,18 @@ Route::get('/Factura/{id}', [Reportes::class, 'factura'])
 Route::get('/ReporteUno', [Reportes::class, 'reporteUno'])
     ->name('reporteUno');
 
+Route::get('/ReporteDos', [Reportes::class, 'reporteDos'])
+    ->name('reporteDos');
+
+Route::get('/ReporteTres', [Reportes::class, 'reporteTres'])
+    ->name('reporteTres');
+
+Route::get('/ReporteCuatro', [Reportes::class, 'reporteCuatro'])
+    ->name('reporteCuatro');
+
+Route::get('/ReporteCinco', [Reportes::class, 'reporteCinco'])
+    ->name('reporteCinco');
+
 Route::resource('/Productos', ProductosController::class)
     ->middleware('auth')
     ->names('productos.incio');

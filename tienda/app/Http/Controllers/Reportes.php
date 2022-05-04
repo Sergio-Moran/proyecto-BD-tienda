@@ -42,4 +42,40 @@ class Reportes extends Controller
 
         return $pdf;
     }
+
+    public function reporteDos()
+    {
+        $pdf = PDF::loadView('Reportes.reporteDos'/*, compact('') */)
+            ->setPaper("legal", 'landscape')
+            ->stream('.pdf');
+
+        return $pdf;
+    }
+
+    public function reporteTres()
+    {
+        $pdf = PDF::loadView('Reportes.reporteTres'/*, compact('') */)
+            ->setPaper("legal", 'landscape')
+            ->stream('.pdf');
+
+        return $pdf;
+    }
+
+    public function reporteCuatro()
+    {
+        $pdf = PDF::loadView('Reportes.reporteCuatro'/*, compact('') */)
+            ->setPaper("legal", 'landscape')
+            ->stream('.pdf');
+
+        return $pdf;
+    }
+
+    public function reporteCinco()
+    {
+        $pdf = PDF::loadView('Reportes.reporteCinco'/*, compact('') */)
+            ->setPaper("legal", 'landscape')
+            ->stream('.pdf');
+
+        return $pdf;
+    }
 }
