@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\detalles_facturas;
 use App\Models\facturas;
+use App\Models\inventario_productos;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -90,12 +91,18 @@ class Reportes extends Controller
     {
 
         /* SELECT inventario_productos.id, descripcion, productos.nombres,  cantidad,
-        IFNULL(inventario_productos.updated_at,'Sin modificaciones')  AS actualizaciones FROM inventario_productos, productos
+        IFNULL(inventario_productos.updated_at,'Sin modificaciones')  AS actualizaciones 
+        FROM inventario_productos, productos
         WHERE inventario_productos.cod_producto_fk = productos.id */
 
+        $datos = inventario_productos::selectRaw('inventario_productos.id, descripcion, productos.nombres,  cantidad')
+  
+            ->join('productos', 'inventario_productos.cod_producto_fk', '=', 'productos.id')
+            ->get();
 
+            return $datos;
 
-        $pdf = PDF::loadView('Reportes.reporteTres'/*, compact('') */)
+        $pdf = PDF::loadView('Reportes.reporteTres', compact('datos'))
             ->setPaper("legal", 'landscape')
             ->stream('.pdf');
 
@@ -110,13 +117,14 @@ class Reportes extends Controller
         GROUP BY clientes.nombre
         ORDER BY ventas DESC */
 
-        $datos = facturas::selectRaw('clientes.nombre, SUM(facturas.cod_cliente_fk) as compras ')
+        $datos = facturas::selectRaw('clientes.nombre, SUM(facturas.estado_pagado) as compras ')
             ->join('clientes', 'facturas.cod_cliente_fk', '=', 'clientes.id')
+            ->where('facturas.estado_pagado','=',1)
             ->groupBy('clientes.nombre')
             ->orderBy('compras', 'desc')
             ->get();
 
-        /* return $datos; */
+        return $datos;
 
         $pdf = PDF::loadView('Reportes.reporteCuatro', compact('datos'))
             ->setPaper("legal", 'landscape')
