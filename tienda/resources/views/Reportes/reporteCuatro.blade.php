@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reporte Cuatro</title>
     <style>
-         @page {
+        @page {
             margin: 0.3cm;
             line-height: 1.3;
             font-size: 15;
@@ -24,9 +25,33 @@
         .titulo {
             background-color: rgb(216, 216, 216);
         }
+
     </style>
 </head>
-<body>
-    hola
+<div align="center">
+    <div>
+        <h1>Tienda</h1>
+        <b>
+            <h2 for="">Reporde de los productos más solicitados </h2>
+        </b>
+    </div>
+</div>
+<br>
+
+<body class="">
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Nombre del cliente</th>
+            <th>No. Compras</th>
+        </tr>
+        <br>
+        @foreach ($datos as $dato)
+            <tr>
+                <th>{{ $dato->nombre }}</th>
+                <th>Ha hecho {{ $dato->compras }} compras en la tienda</th>
+            </tr>
+        @endforeach
+    </table>
 </body>
+
 </html>

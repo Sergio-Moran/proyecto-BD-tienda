@@ -97,7 +97,21 @@ class Reportes extends Controller
 
     public function reporteCuatro()
     {
-        $pdf = PDF::loadView('Reportes.reporteCuatro'/*, compact('') */)
+        /* SELECT clientes.nombre, SUM(facturas.cod_cliente_fk) as ventas 
+        FROM facturas, clientes
+        WHERE facturas.cod_cliente_fk = clientes.id
+        GROUP BY clientes.nombre
+        ORDER BY ventas DESC */
+
+        $datos=facturas::selectRaw('clientes.nombre, SUM(facturas.cod_cliente_fk) as compras ')
+        ->join('clientes', 'facturas.cod_cliente_fk', '=', 'clientes.id')
+        ->groupBy('clientes.nombre')
+        ->orderBy('compras', 'desc')
+        ->get();
+
+        /* return $datos; */
+
+        $pdf = PDF::loadView('Reportes.reporteCuatro', compact('datos'))
             ->setPaper("legal", 'landscape')
             ->stream('.pdf');
 
