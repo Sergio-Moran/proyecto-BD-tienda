@@ -45,7 +45,22 @@ class Reportes extends Controller
 
     public function reporteDos()
     {
-        $pdf = PDF::loadView('Reportes.reporteDos'/*, compact('') */)
+        /* SELECT productos.nombres, SUM(detalles_facturas.cantidad) as cantidadVenta FROM detalles_facturas, facturas, productos
+        WHERE detalles_facturas.cod_factura_fk = facturas.id
+        AND detalles_facturas.cod_producto_fk = productos.id
+        AND facturas.estado_pagado = 1
+        GROUP BY detalles_facturas.cod_producto_fk
+        ORDER BY cantidadVenta DESC */
+
+        $datos=detalles_facturas::selectRaw('productos.nombres, SUM(detalles_facturas.cantidad) as cantidadVenta')
+        ->join('facturas', 'facturas.id', '=', 'detalles_facturas.cod_factura_fk')
+        ->join('productos', 'detalles_facturas.cod_producto_fk', '=', 'productos.id')
+        ->where('facturas.estado_pagado', '=', 1)
+        ->groupBy('detalles_facturas.cod_producto_fk')
+        ->orderBy('cantidadVenta', 'desc')
+        ->get();
+        
+        $pdf = PDF::loadView('Reportes.reporteDos', compact('datos'))
             ->setPaper("legal", 'landscape')
             ->stream('.pdf');
 
