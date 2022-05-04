@@ -15,7 +15,6 @@
 
         body {
             border: 4px solid #000;
-            
         }
 
         table {
