@@ -32,7 +32,7 @@
     <div>
         <h1>Tienda</h1>
         <b>
-            <h2 for="">Reporde de los productos más solicitados </h2>
+            <h2 for="">Reporte de clientes con mayores compras</h2>
         </b>
     </div>
 </div>
