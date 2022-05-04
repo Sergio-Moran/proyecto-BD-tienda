@@ -1,6 +1,6 @@
-<form method="POST" action="{{ url('/Ventas/') }}"  role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ url('/Ventas/') }}"  role="form" enctype="multipart/form-data" style="margin: 2ch;  padding: 3ch">
   @csrf
-  <h1 class="btn btn-ghost normal-case text-xl" style="margin-top: 0.5ch; margin-left: 40%; font-size: 2rem">Datos de la Factura</h1>
+  <h1 class="btn btn-ghost normal-case text-xl" style="margin-top: 0.5ch; margin-left: 35%; font-size: 2rem">Datos de la Factura</h1>
   <br>
   <div class="form-row form-row shadow-md bg-auto rounded-lg" style="margin: 2ch; padding: 2ch">
     <div class="grid grid-cols-2 gap-4">

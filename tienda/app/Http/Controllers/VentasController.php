@@ -60,8 +60,10 @@ class VentasController extends Controller
         })
             ->get();
 
+        $tabProductos = [];
 
-        return view('Ventas.crear', ['id' => $id['id'], 'clientes' => $clientes, 'productos' => $productos]);
+
+        return view('Ventas.crear', ['id' => $id['id'], 'clientes' => $clientes, 'productos' => $productos, 'tabProductos' => $tabProductos]);
     }
 
     /**
@@ -137,11 +139,18 @@ class VentasController extends Controller
         $datos['subtotal'] = $datos['cantidad'] * $res;
 
         detalles_facturas::insert($datos);
-
-        $productos = detalles_facturas::where('cod_factura_fk', '=', $id)
+        $productos = productos::where(function ($query) {
+            $query->where('nombres', 'like', "%{$this->valor}%")
+                ->orWhere('precio_venta', 'like', "%{$this->valor}%")
+                ->orWhere('precio_compra', 'like', "%{$this->valor}%");
+        })
+            ->get();
+        $tabProductos = detalles_facturas::where('cod_factura_fk', '=', $id)
             ->join('productos', 'detalles_facturas.cod_producto_fk', '=', 'productos.id')
             ->get();
-        /* return $productos; */
-        return view('Ventas.crear', ['id' => $id, 'productos' => $productos]);
+
+/* 
+         return $productos;  */
+        return view('Ventas.crear', ['id' => $id, 'productos' => $productos, 'tabProductos' => $tabProductos]);
     }
 }

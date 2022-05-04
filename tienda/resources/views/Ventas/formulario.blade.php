@@ -1,9 +1,9 @@
-<h1 class="btn btn-ghost normal-case text-xl" style="margin-top: 0.5ch; margin-left: 40%; font-size: 2rem">
+<h1 class="btn btn-ghost normal-case text-xl" style="margin-top: 0.5ch; margin-left: 35%; font-size: 2rem" style="margin: 2ch;  padding: 3ch">
     Agregar Producto</h1>
 <br>
 
 
-<div class="form-row form-row shadow-md bg-auto rounded-lg" style="margin: 2ch; padding: 2ch">
+<div class="form-row form-row shadow-md bg-auto rounded-lg" style="margin: 2ch; padding: 3ch" >
     <div class="grid grid-cols-2 gap-4">
 
         <label for="Nombre">Factura No</label>
@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div class="overflow-x-auto">
+<div class="overflow-x-auto" style="margin: 2ch;  padding: 3ch">
     <table class="table table-zebra w-full">
         <!-- head -->
         <thead>
@@ -47,13 +47,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($productos as $producto)
+            @foreach ($tabProductos as $producto)
                 <tr>
                     <th>{{ $producto->id }}</th>
                     <th>{{ $producto->nombres }}</th>
-                    <td>Q {{ $producto->precio_venta }}</td>
+                    <td>Q. {{ $producto->precio_venta }}</td>
                     <td>{{ $producto->cantidad }}</td>
-                    <td>{{ $producto->subtotal }}</td>
+                    <td>Q. {{ $producto->subtotal }}</td>
                 </tr>
             @endforeach
         </tbody>

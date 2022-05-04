@@ -9,7 +9,7 @@
 
 <br>
 
-<div class="overflow-x-auto">
+<div class="overflow-x-auto" style="margin: 2ch;  padding: 3ch">
     <table class="table table-zebra w-full">
         <!-- head -->
         <thead>

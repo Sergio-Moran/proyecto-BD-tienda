@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\FacturasController;
 use App\Http\Controllers\InventarioProductosController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProveedoresController;
@@ -42,6 +43,10 @@ Route::get('/Inventario/{id}/destroy', [InventarioProductosController::class, 'd
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
     ->name('inicio.index');
 
+Route::get('/Facturas/index', [FacturasController::class, 'index'])
+    ->name('inicio.index');
+
+
 Route::get('/Cliente/lista', [ClientesController::class, 'cliente'])
     ->name('cliente.lista');
 
@@ -81,6 +86,11 @@ Route::resource('/Ventas', VentasController::class)
 Route::resource('/Proveedor', ProveedoresController::class)
     ->middleware('auth')
     ->names('proveedor.inicio');
+    
+Route::resource('/Facturas', FacturasController::class)
+    ->middleware('auth')
+    ->names('facturas.inicio');
+
 
 Route::resource('/Medida', UnidadesDeMedidaController::class)
     ->middleware('auth')
