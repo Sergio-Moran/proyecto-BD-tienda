@@ -19,7 +19,7 @@ class CreateInventarioProductosTable extends Migration
             $table->double('cantidad');
             $table->foreignId('cod_producto_fk')
                 ->nullable(true)
-                ->constrained('productos', 'codigo')
+                ->constrained('productos', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->timestamps();

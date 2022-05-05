@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\FacturasController;
 use App\Http\Controllers\InventarioProductosController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProveedoresController;
@@ -25,23 +26,40 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
-Route::get('/Proveedor/{id}/destroy', [ProveedoresController::class, 'destroy'])->name('destroy');
+Route::get('/Proveedor/{id}/destroy', [ProveedoresController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Medida/{id}/destroy', [UnidadesDeMedidaController::class, 'destroy'])->name('destroy');
+Route::get('/Medida/{id}/destroy', [UnidadesDeMedidaController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])->name('destroy');
+Route::get('/Productos/{id}/destroy', [ProductosController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Cliente/{id}/destroy', [ClientesController::class, 'destroy'])->name('destroy');
+Route::get('/Cliente/{id}/destroy', [ClientesController::class, 'destroy'])
+    ->name('destroy');
 
-Route::get('/Inventario/{id}/destroy', [InventarioProductosController::class, 'destroy'])->name('destroy');
+Route::get('/Ventas/{id}/destroy', [VentasController::class, 'destroy'])
+    ->name('destroy');
+
+Route::get('/Ventas/{id}/vendido', [VentasController::class, 'vendido'])
+    ->name('vendido');
+
+Route::get('/Inventario/{id}/destroy', [InventarioProductosController::class, 'destroy'])
+    ->name('destroy');
 
 Route::get('/Inicio/index', [ClientesController::class, 'index'])
+    ->name('inicio.index');
+
+Route::get('/Facturas/index', [FacturasController::class, 'index'])
     ->name('inicio.index');
 
 Route::get('/Cliente/lista', [ClientesController::class, 'cliente'])
     ->name('cliente.lista');
 
 Route::get('/Cliente/Reportes', [ClientesController::class, 'reporte'])
+    ->name('cliente.reportes');
+
+Route::get('/Cliente/Reportes/datos', [Reportes::class, 'datos'])
     ->name('cliente.reportes');
 
 Route::get('/Cliente/usuarios', [ClientesController::class, 'create'])
@@ -52,8 +70,26 @@ Route::post('/Cliente/store', [ClientesController::class, 'usuario']);
 Route::get('/Cliente/Perfil', [ClientesController::class, 'perfil'])
     ->name('cliente.perfil');
 
-Route::get('/ReporteUno', [Reportes::class, 'reporteUno'])
+Route::post('/Ventas/Carrito', [VentasController::class, 'carrito'])
+    ->name('cliente.perfil');
+
+Route::get('/Factura/{id}', [Reportes::class, 'factura'])
+    ->name('factura');
+
+Route::post('/ReporteUno', [Reportes::class, 'reporteUno'])
     ->name('reporteUno');
+
+Route::get('/ReporteDos', [Reportes::class, 'reporteDos'])
+    ->name('reporteDos');
+
+Route::get('/ReporteTres', [Reportes::class, 'reporteTres'])
+    ->name('reporteTres');
+
+Route::get('/ReporteCuatro', [Reportes::class, 'reporteCuatro'])
+    ->name('reporteCuatro');
+
+/* Route::get('/ReporteCinco', [Reportes::class, 'reporteCinco'])
+    ->name('reporteCinco'); */
 
 Route::resource('/Productos', ProductosController::class)
     ->middleware('auth')
@@ -74,6 +110,11 @@ Route::resource('/Ventas', VentasController::class)
 Route::resource('/Proveedor', ProveedoresController::class)
     ->middleware('auth')
     ->names('proveedor.inicio');
+
+Route::resource('/Facturas', FacturasController::class)
+    ->middleware('auth')
+    ->names('facturas.inicio');
+
 
 Route::resource('/Medida', UnidadesDeMedidaController::class)
     ->middleware('auth')

@@ -8,6 +8,7 @@
                 <img src="https://api.lorem.space/image/face?hash=92048" />
             </div>
         </div>
+        
         <div class="grid grid-cols-2 gap-4">
             <div class="grid justify-items-center">
                 @foreach ($usuarios as $usuario)

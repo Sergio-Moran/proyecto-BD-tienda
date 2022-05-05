@@ -14,15 +14,15 @@
         <div class="grid grid-cols-2 gap-4">
             <label for="Nombre">Nombre Producto</label>
             <input type="text" placeholder="Nombre Producto" name="nombres" class="input input-bordered"
-                value="{{ $datos->nombres ?? old('nombres') }}">
+                value="{{ $datos->nombres ?? old('nombres') }}" required>
 
             <label for="Nombre">Precio de Venta</label>
             <input type="text" placeholder="Q" name="precio_venta" class="input input-bordered"
-                value="{{ $datos->precio_venta ?? old('precio_venta') }}">
+                value="{{ $datos->precio_venta ?? old('precio_venta') }}" required>
 
             <label for="Nombre">Precio de Compra</label>
             <input type="text" placeholder="Q" name="precio_compra" class="input input-bordered"
-                value="{{ $datos->precio_compra ?? old('precio_compra') }}">
+                value="{{ $datos->precio_compra ?? old('precio_compra') }}" required>
 
             <label for="Nombre">Proveedor</label>
             <select class="input input-bordered" name="cod_proveedor_fk" id="cod_proveedor_fk" option="Medida">

@@ -7,7 +7,7 @@
 
 <br>
 
-<div class="overflow-x-auto">
+<div class="overflow-x-auto" style="margin: 2ch;  padding: 3ch">
     <table class="table table-zebra w-full">
         <!-- head -->
         <thead>
@@ -16,7 +16,7 @@
                 <th>Nombre</th>
                 <th>Precio de Venta</th>
                 <th>Precio de Compra</th>
-                <th>Estado</th>
+                {{-- <th>Estado</th> --}}
                 <th>Proveedor</th>
                 <th>Unidad de Medida</th>
                 <th>Acciones</th>
@@ -29,9 +29,9 @@
                 <tr>
                     <th>{{ $producto->id }}</th>
                     <th>{{ $producto->nombreProducto }}</th>
-                    <td>{{ $producto->precio_venta }}</td>
-                    <td>{{ $producto->precio_compra }}</td>
-                    <td>{{ $producto->estado }}</td>
+                    <td>Q. {{ $producto->precio_venta }}</td>
+                    <td>Q. {{ $producto->precio_compra }}</td>
+                    {{-- <td>{{ $producto->estado }}</td> --}}
                     <td>{{ $producto->nombreProveedor }}</td>
                     <td>{{ $producto->descripcion }}</td>
                     <td>

@@ -18,20 +18,15 @@
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
-                    <a class="btn btn-primary" name="btn-" id="btn-" type="button" href="{{ url('/Productos/Show') }}">
-                        <i class="">📦 Productos</i>
-                    </a>
-                </li>
-                <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
-                    <a class="btn bg-info" style="padding-right: 44px" style="padd" name="btn-" id="btn-"
-                        type="button" href="{{ url('/Cliente/Show') }}">
-                        <i class="">🧑‍🔧 Cuenta</i>
-                    </a>
-                </li>
-                <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-info" style="padding-right: 44px" style="padd" name="btn-" id="btn-"
                         type="button" href="{{ url('/Proveedor') }}">
                         <i class="">🧑‍🔧 Proveedores</i>
+                    </a>
+                </li>
+                <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
+                    <a class="btn btn-primary" name="btn-" id="btn-" type="button"
+                        href="{{ url('/Productos/Show') }}">
+                        <i class="">📦 Productos</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
@@ -48,7 +43,7 @@
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                     <a class="btn bg-secondary-focus form-control" style="padding-right: 48px" name="btn-" id="btn-"
                         type="button" href="{{ url('/Ventas/Show') }}">
-                        <i class="">💵 Ventas</i>
+                        <i class="">💵 Vender</i>
                     </a>
                 </li>
                 <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
@@ -57,6 +52,12 @@
                         <i class="">📄 Reportes</i>
                     </a>
                 </li>
+                {{-- <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
+                    <a class="btn bg-info" style="padding-right: 44px" style="padd" name="btn-" id="btn-"
+                        type="button" href="{{ url('/Cliente/Show') }}">
+                        <i class="">🧑‍🔧 Cuenta</i>
+                    </a>
+                </li> --}}
                 @if (request()->user()->rol == 'Administrador')
                     <li class="flex space-x-2 mt-2 cursor-pointer hover:text-[#EC5252] duration-150">
                         <a class="btn bg-success form-control" style="padding-right: 34px" name="btn-" id="btn-"

@@ -15,6 +15,7 @@ class FacturasController extends Controller
     public function index()
     {
         //
+        return view('Facturas.index');
     }
 
     /**

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reporte Uno</title>
+    <title>Reporte Tres</title>
     <style>
-         @page {
+        @page {
             margin: 0.3cm;
             line-height: 1.3;
             font-size: 15;
@@ -24,13 +25,14 @@
         .titulo {
             background-color: rgb(216, 216, 216);
         }
+
     </style>
 </head>
 <div align="center">
     <div>
         <h1>Tienda</h1>
         <b>
-            <h2 for="">Reporde Venta de productos por periodo de tiempo </h2>
+            <h2 for="">Reporde de los productos más solicitados </h2>
         </b>
     </div>
 </div>
@@ -39,14 +41,24 @@
 <body class="">
     <table cellpadding="0" cellspacing="0">
         <tr>
+            <th>Codigo</th>
             <th>Nombre del Producto</th>
-            <th>Cantidad Vendida</th>
+            <th>Descripción</th>
+            <th>Cantidad Actual</th>
+            <th>Modificaciones</th>
         </tr>
         <br>
         @foreach ($datos as $dato)
             <tr>
+                <th>{{ $dato->id }}</th>
                 <th>{{ $dato->nombres }}</th>
-                <th>{{ $dato->ventas }} Unidades</th>
+                <th>{{ $dato->descripcion }}</th>
+                <th>{{ $dato->cantidad }} Unidades en Existencia</th>
+                @if ($dato->updated_at == null)
+                    <td>Sin modificaciones</td>
+                @else
+                    <td>{{ $dato->updated_at }}</td>
+                @endif
             </tr>
         @endforeach
     </table>

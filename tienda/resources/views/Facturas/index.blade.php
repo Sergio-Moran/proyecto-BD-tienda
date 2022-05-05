@@ -1,16 +1,14 @@
 @extends('layouts.app')
 
 @section('content_header')
-    <header>INICIO</header>
+    <header>Lista Facturas</header>
 @endsection
 
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @livewireStyles
-    <livewire:ventas.index />
+    <livewire:reportes.facturas>
     <script src="{{ asset('js/app.js') }}"></script>
-    
-    <script src="{{ asset('js/producto.js') }}"></script>
     @livewireScripts
 @endsection
 
